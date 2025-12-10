@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
@@ -22,13 +22,6 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  
-  // Blur effect when scrolling
-  const headerBlur = useTransform(
-    scrollY,
-    [0, 100],
-    ["blur(0px)", "blur(8px)"]
-  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +31,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
@@ -93,46 +85,43 @@ export default function Header() {
           <div className="flex items-center gap-2">
             {/* Social links - hidden on mobile */}
             <div className="hidden sm:flex items-center gap-1">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:text-primary hover:glow-blue-hover transition-all"
-                asChild
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
               >
-                <a
-                  href="https://github.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary hover:glow-blue-hover transition-all"
                 >
                   <Github className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:text-primary hover:glow-blue-hover transition-all"
-                asChild
+                </Button>
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary hover:glow-blue-hover transition-all"
                 >
                   <Linkedin className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:text-primary hover:glow-blue-hover transition-all"
-                asChild
-              >
-                <a href="mailto:your.email@example.com" aria-label="Email">
+                </Button>
+              </a>
+              <a href="mailto:your.email@example.com" aria-label="Email">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary hover:glow-blue-hover transition-all"
+                >
                   <Mail className="h-5 w-5" />
-                </a>
-              </Button>
+                </Button>
+              </a>
             </div>
 
             <ThemeToggle />
@@ -183,36 +172,28 @@ export default function Header() {
 
           {/* Mobile social links */}
           <div className="flex items-center gap-2 pt-2 border-t border-border/40">
-            <Button
-              variant="ghost"
-              size="sm"
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex-1"
-              asChild
             >
-              <a
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Button variant="ghost" size="sm" className="w-full">
                 <Github className="h-4 w-4 mr-2" />
                 GitHub
-              </a>
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
+              </Button>
+            </a>
+            <a
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex-1"
-              asChild
             >
-              <a
-                href="https://linkedin.com/in/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Button variant="ghost" size="sm" className="w-full">
                 <Linkedin className="h-4 w-4 mr-2" />
                 LinkedIn
-              </a>
-            </Button>
+              </Button>
+            </a>
           </div>
         </div>
       </motion.div>

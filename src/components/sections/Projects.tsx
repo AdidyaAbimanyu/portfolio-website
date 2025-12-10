@@ -109,9 +109,11 @@ export default function ProjectsSection() {
         {/* View All Button */}
         <FadeIn delay={0.4}>
           <div className="text-center mt-12">
-            <Button size="lg" variant="outline" asChild>
-              <a href="/projects">View All Projects ({projects.length})</a>
-            </Button>
+            <a href="/projects">
+              <Button size="lg" variant="outline">
+                View All Projects ({projects.length})
+              </Button>
+            </a>
           </div>
         </FadeIn>
       </div>

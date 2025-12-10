@@ -1,14 +1,12 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, FileText, Database, X } from "lucide-react";
+import { ExternalLink, Github, FileText, Database } from "lucide-react";
 import Image from "next/image";
 import { Project } from "@/types";
 import { getTechColor } from "@/lib/utils";
-import { modalVariants, backdropVariants } from "@/lib/animations";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -138,52 +136,52 @@ export default function ProjectModal({
           {/* Links */}
           <div className="flex flex-wrap gap-3 pt-4 border-t">
             {project.github && (
-              <Button asChild>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button>
                   <Github className="h-4 w-4 mr-2" />
                   View Code
-                </a>
-              </Button>
+                </Button>
+              </a>
             )}
             {project.demo && (
-              <Button variant="outline" asChild>
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
                   <ExternalLink className="h-4 w-4 mr-2" />
                   Live Demo
-                </a>
-              </Button>
+                </Button>
+              </a>
             )}
             {project.paper && (
-              <Button variant="outline" asChild>
-                <a
-                  href={project.paper}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <a
+                href={project.paper}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
                   <FileText className="h-4 w-4 mr-2" />
                   Research Paper
-                </a>
-              </Button>
+                </Button>
+              </a>
             )}
             {project.dataset && (
-              <Button variant="outline" asChild>
-                <a
-                  href={project.dataset}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <a
+                href={project.dataset}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
                   <Database className="h-4 w-4 mr-2" />
                   Dataset
-                </a>
-              </Button>
+                </Button>
+              </a>
             )}
           </div>
         </div>

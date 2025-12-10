@@ -49,46 +49,43 @@ export default function Footer() {
               technology.
             </p>
             <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:text-primary hover:glow-blue-hover transition-all"
-                asChild
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
               >
-                <a
-                  href="https://github.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary hover:glow-blue-hover transition-all"
                 >
                   <Github className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:text-primary hover:glow-blue-hover transition-all"
-                asChild
+                </Button>
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary hover:glow-blue-hover transition-all"
                 >
                   <Linkedin className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:text-primary hover:glow-blue-hover transition-all"
-                asChild
-              >
-                <a href="mailto:your.email@example.com" aria-label="Email">
+                </Button>
+              </a>
+              <a href="mailto:your.email@example.com" aria-label="Email">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary hover:glow-blue-hover transition-all"
+                >
                   <Mail className="h-5 w-5" />
-                </a>
-              </Button>
+                </Button>
+              </a>
             </div>
           </div>
 
