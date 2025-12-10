@@ -1,12 +1,14 @@
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio - Your Name",
-  description: "Computer Science Student & ML Researcher",
+  title: "Portfolio - Adidya Abimanyu",
+  description: "Computer Science Student",
 };
 
 export default function RootLayout({
@@ -23,7 +25,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Header />
+          <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

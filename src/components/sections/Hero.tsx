@@ -6,6 +6,7 @@ import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import SlideIn from "@/components/animations/SlideIn";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -54,13 +55,13 @@ export default function Hero() {
             <FadeIn delay={0.3}>
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 Hi, I'm{" "}
-                <span className="gradient-text">Your Name</span>
+                <span className="gradient-text">Adidya Abimanyu</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.4}>
               <p className="text-xl md:text-2xl text-muted-foreground">
-                Computer Science Student & ML Researcher
+                Computer Science Student
               </p>
             </FadeIn>
 
@@ -68,15 +69,15 @@ export default function Hero() {
               <p className="text-base md:text-lg text-muted-foreground max-w-xl">
                 Specializing in{" "}
                 <span className="text-primary font-medium">
-                  Image Processing
+                  Web Development
                 </span>
                 ,{" "}
-                <span className="text-primary font-medium">Deep Learning</span>
+                <span className="text-primary font-medium">Machine Learning</span>
                 , and{" "}
                 <span className="text-primary font-medium">
-                  Computer Vision
+                  Deep Learning
                 </span>
-                . Passionate about solving real-world problems through AI.
+                . Passionate about solving real-world problems through automization.
               </p>
             </FadeIn>
 
@@ -104,7 +105,7 @@ export default function Hero() {
                 </span>
                 <div className="flex gap-2">
                   <a
-                    href="https://github.com/yourusername"
+                    href="https://github.com/AdidyaAbimanyu"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -117,7 +118,7 @@ export default function Hero() {
                     </Button>
                   </a>
                   <a
-                    href="https://linkedin.com/in/yourusername"
+                    href="https://www.linkedin.com/in/adidya-abimanyu/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -148,14 +149,15 @@ export default function Hero() {
                 }}
                 className="relative z-10"
               >
-                <div className="w-full aspect-square max-w-md mx-auto rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm border border-primary/20 glow-blue p-8 flex items-center justify-center">
-                  {/* Placeholder - ganti dengan image Anda */}
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">👨‍💻</div>
-                    <p className="text-muted-foreground">
-                      Your photo will go here
-                    </p>
-                  </div>
+                <div className="w-full aspect-square max-w-md mx-auto rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm border border-primary/20 glow-blue p-8 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/images/avatar.jpg"
+                    alt="Adidya Abimanyu"
+                    width={300}
+                    height={300}
+                    className="rounded-xl object-cover"
+                    priority
+                  />
                 </div>
               </motion.div>
 
