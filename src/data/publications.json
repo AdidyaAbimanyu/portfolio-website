@@ -1,0 +1,49 @@
+[
+  {
+    "id": "pub-1",
+    "title": "Enhanced Image Contrast using Multi-Histogram Equalization with Spatial-Constrained Clustering",
+    "authors": [
+      "Your Name",
+      "Co-author Name",
+      "Supervisor Name"
+    ],
+    "venue": "IEEE Transactions on Image Processing (Under Review)",
+    "year": 2024,
+    "status": "Under Review",
+    "doi": null,
+    "pdf": "/papers/image-enhancement-2024.pdf",
+    "arxiv": "https://arxiv.org/abs/XXXX.XXXXX",
+    "abstract": "This paper presents a novel approach for image enhancement using multi-histogram equalization combined with spatial-constrained clustering algorithms. We evaluate four clustering methods (K-Means, FCM, GMM, HDBSCAN) in HSV color space and demonstrate superior performance across multiple benchmark datasets. Our method achieves SSIM scores above 0.92 while maintaining natural color appearance and avoiding over-enhancement artifacts.",
+    "tags": [
+      "Image Processing",
+      "Computer Vision",
+      "Clustering",
+      "Enhancement"
+    ],
+    "citations": 0,
+    "order": 1
+  },
+  {
+    "id": "pub-2",
+    "title": "Robust Deep Steganography using Adversarial Training",
+    "authors": [
+      "Your Name",
+      "Research Partner"
+    ],
+    "venue": "International Conference on Machine Learning (In Preparation)",
+    "year": 2025,
+    "status": "In Preparation",
+    "doi": null,
+    "pdf": null,
+    "arxiv": null,
+    "abstract": "We propose an enhanced deep steganography framework based on AttenHideNet architecture with adversarial training to improve robustness against steganalysis attacks. Our method achieves 28% improvement in robustness while maintaining high visual quality (PSNR >40dB) and data hiding capacity.",
+    "tags": [
+      "Deep Learning",
+      "Steganography",
+      "Security",
+      "Adversarial Training"
+    ],
+    "citations": 0,
+    "order": 2
+  }
+]

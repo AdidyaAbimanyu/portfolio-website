@@ -1,0 +1,83 @@
+[
+  {
+    "id": "exp-1",
+    "title": "Research Assistant",
+    "company": "University Research Lab",
+    "location": "Indonesia",
+    "type": "Part-time",
+    "startDate": "2024-01",
+    "endDate": null,
+    "current": true,
+    "description": "Conducting cutting-edge research in image enhancement and deep learning applications for computer vision.",
+    "responsibilities": [
+      "Developed multi-histogram equalization algorithm using spatial-constrained clustering (K-Means, FCM, GMM, HDBSCAN)",
+      "Implemented deep steganography system (AttenHideNet) with adversarial training for robust image concealment",
+      "Optimized batch scheduling algorithms using Particle Swarm Optimization (PSO) for delivery systems",
+      "Conducted extensive experimental validation using KODAK, UCMERCED, CelebA, and medical imaging datasets",
+      "Achieved superior performance metrics: SSIM 0.92+, IE 1.45, AMBE <3.5 across multiple datasets"
+    ],
+    "technologies": [
+      "Python",
+      "TensorFlow",
+      "Keras",
+      "NumPy",
+      "OpenCV",
+      "Scikit-learn",
+      "Google Colab"
+    ],
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "exp-2",
+    "title": "Computer Science Student",
+    "company": "Your University",
+    "location": "Indonesia",
+    "type": "Full-time",
+    "startDate": "2021-08",
+    "endDate": null,
+    "current": true,
+    "description": "Pursuing Bachelor's degree in Computer Science with focus on Artificial Intelligence and Machine Learning.",
+    "responsibilities": [
+      "Maintained GPA 3.8+ with focus on AI/ML coursework",
+      "Completed advanced courses: Digital Image Processing, Deep Learning, Algorithm Optimization",
+      "Active member of AI/ML student research group",
+      "Teaching assistant for Introduction to Programming course"
+    ],
+    "technologies": [
+      "Python",
+      "Java",
+      "C++",
+      "JavaScript",
+      "SQL"
+    ],
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "exp-3",
+    "title": "Freelance Developer",
+    "company": "Self-Employed",
+    "location": "Remote",
+    "type": "Freelance",
+    "startDate": "2022-06",
+    "endDate": "2023-12",
+    "current": false,
+    "description": "Developed custom software solutions for small businesses and startups.",
+    "responsibilities": [
+      "Built responsive web applications using React and Next.js",
+      "Developed data analysis tools using Python and Pandas",
+      "Created automation scripts for business process optimization",
+      "Consulted on machine learning integration for client projects"
+    ],
+    "technologies": [
+      "React",
+      "Next.js",
+      "Python",
+      "Pandas",
+      "PostgreSQL"
+    ],
+    "featured": false,
+    "order": 3
+  }
+]

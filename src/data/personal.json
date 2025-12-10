@@ -1,0 +1,23 @@
+{
+  "name": "Your Name",
+  "title": "Computer Science Student & ML Researcher",
+  "bio": "Passionate Computer Science student specializing in Image Processing, Deep Learning, and Computer Vision. Currently conducting research on image enhancement algorithms and deep steganography. Always eager to solve real-world problems through innovative AI solutions.",
+  "location": "Indonesia",
+  "email": "your.email@example.com",
+  "phone": "+62 812 3456 7890",
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername",
+    "scholar": "https://scholar.google.com/citations?user=YOUR_ID"
+  },
+  "avatar": "/images/avatar.jpg",
+  "resume": "/resume.pdf",
+  "interests": [
+    "Image Processing",
+    "Deep Learning",
+    "Computer Vision",
+    "Optimization Algorithms",
+    "Research & Development"
+  ]
+}

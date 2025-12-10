@@ -1,0 +1,202 @@
+{
+  "categories": [
+    {
+      "name": "Programming Languages",
+      "skills": [
+        {
+          "name": "Python",
+          "level": "Advanced",
+          "icon": "python",
+          "yearsOfExperience": 4
+        },
+        {
+          "name": "JavaScript",
+          "level": "Intermediate",
+          "icon": "javascript",
+          "yearsOfExperience": 2
+        },
+        {
+          "name": "TypeScript",
+          "level": "Intermediate",
+          "icon": "typescript",
+          "yearsOfExperience": 1
+        },
+        {
+          "name": "Java",
+          "level": "Intermediate",
+          "icon": "java",
+          "yearsOfExperience": 2
+        },
+        {
+          "name": "C++",
+          "level": "Beginner",
+          "icon": "cpp",
+          "yearsOfExperience": 1
+        }
+      ],
+      "order": 1
+    },
+    {
+      "name": "Deep Learning & AI",
+      "skills": [
+        {
+          "name": "TensorFlow",
+          "level": "Advanced",
+          "icon": "tensorflow",
+          "yearsOfExperience": 3
+        },
+        {
+          "name": "Keras",
+          "level": "Advanced",
+          "icon": "keras",
+          "yearsOfExperience": 3
+        },
+        {
+          "name": "PyTorch",
+          "level": "Intermediate",
+          "icon": "pytorch",
+          "yearsOfExperience": 2
+        },
+        {
+          "name": "Scikit-learn",
+          "level": "Advanced",
+          "icon": "sklearn",
+          "yearsOfExperience": 3
+        },
+        {
+          "name": "OpenCV",
+          "level": "Advanced",
+          "icon": "opencv",
+          "yearsOfExperience": 3
+        }
+      ],
+      "order": 2
+    },
+    {
+      "name": "Data Science",
+      "skills": [
+        {
+          "name": "NumPy",
+          "level": "Expert",
+          "icon": "numpy",
+          "yearsOfExperience": 4
+        },
+        {
+          "name": "Pandas",
+          "level": "Advanced",
+          "icon": "pandas",
+          "yearsOfExperience": 3
+        },
+        {
+          "name": "Matplotlib",
+          "level": "Advanced",
+          "icon": "matplotlib",
+          "yearsOfExperience": 3
+        },
+        {
+          "name": "SciPy",
+          "level": "Intermediate",
+          "icon": "scipy",
+          "yearsOfExperience": 2
+        }
+      ],
+      "order": 3
+    },
+    {
+      "name": "Web Development",
+      "skills": [
+        {
+          "name": "React",
+          "level": "Intermediate",
+          "icon": "react",
+          "yearsOfExperience": 2
+        },
+        {
+          "name": "Next.js",
+          "level": "Intermediate",
+          "icon": "nextjs",
+          "yearsOfExperience": 1
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "Intermediate",
+          "icon": "tailwind",
+          "yearsOfExperience": 1
+        },
+        {
+          "name": "HTML/CSS",
+          "level": "Advanced",
+          "icon": "html",
+          "yearsOfExperience": 3
+        }
+      ],
+      "order": 4
+    },
+    {
+      "name": "Tools & Platforms",
+      "skills": [
+        {
+          "name": "Git",
+          "level": "Advanced",
+          "icon": "git",
+          "yearsOfExperience": 4
+        },
+        {
+          "name": "GitHub",
+          "level": "Advanced",
+          "icon": "github",
+          "yearsOfExperience": 4
+        },
+        {
+          "name": "Google Colab",
+          "level": "Expert",
+          "icon": "colab",
+          "yearsOfExperience": 3
+        },
+        {
+          "name": "Jupyter Notebook",
+          "level": "Advanced",
+          "icon": "jupyter",
+          "yearsOfExperience": 4
+        },
+        {
+          "name": "VSCode",
+          "level": "Advanced",
+          "icon": "vscode",
+          "yearsOfExperience": 4
+        }
+      ],
+      "order": 5
+    },
+    {
+      "name": "Algorithms & Methods",
+      "skills": [
+        {
+          "name": "K-Means Clustering",
+          "level": "Advanced"
+        },
+        {
+          "name": "FCM (Fuzzy C-Means)",
+          "level": "Advanced"
+        },
+        {
+          "name": "GMM (Gaussian Mixture Model)",
+          "level": "Advanced"
+        },
+        {
+          "name": "HDBSCAN",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Particle Swarm Optimization",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Adversarial Training",
+          "level": "Intermediate"
+        }
+      ],
+      "order": 6
+    }
+  ]
+}
