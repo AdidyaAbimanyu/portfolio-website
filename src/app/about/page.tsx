@@ -1,6 +1,5 @@
 "use client"
 
-import { Metadata } from "next";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 import { Card } from "@/components/ui/card";

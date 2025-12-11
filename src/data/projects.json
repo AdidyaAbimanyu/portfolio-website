@@ -1,148 +1,152 @@
 [
   {
     "id": "proj-1",
-    "slug": "image-enhancement-clustering",
-    "title": "Image Enhancement using Multi-Histogram Equalization",
-    "shortDescription": "Advanced image enhancement system using spatial-constrained clustering in HSV color space",
-    "fullDescription": "Developed a novel image enhancement approach combining multi-histogram equalization with spatial-constrained clustering algorithms (K-Means, FCM, GMM, HDBSCAN) in HSV color space. The system achieves superior contrast enhancement while preserving natural color appearance and avoiding over-enhancement artifacts. Validated on multiple benchmark datasets including KODAK, UCMERCED, and medical imaging collections.",
-    "category": "Research",
+    "slug": "sleepwell-drowsiness-detection",
+    "title": "SleepWell: Rate and Improve Your Quality of Sleep",
+    "shortDescription": "Deep learning-based drowsiness detection system integrated with mobile application for sleep quality monitoring",
+    "fullDescription": "Developed an end-to-end drowsiness detection system using Convolutional Neural Networks (CNN) to analyze facial features and detect drowsiness in real-time. The model is integrated into a mobile application built with Android Studio (Kotlin) and RESTful API for seamless user experience. The system helps users monitor their sleep quality and provides recommendations for better sleep habits.",
+    "category": "Machine Learning",
     "technologies": [
       "Python",
       "TensorFlow",
-      "OpenCV",
-      "NumPy",
-      "K-Means",
-      "FCM",
-      "GMM",
-      "HDBSCAN"
+      "Keras",
+      "CNN",
+      "Android Studio",
+      "Kotlin",
+      "REST API",
+      "OpenCV"
     ],
     "image": null,
-    "github": "https://github.com/yourusername/image-enhancement",
+    "github": "https://github.com/Captone-C242-PS571",
     "demo": null,
-    "paper": "https://arxiv.org/your-paper-link",
-    "dataset": "KODAK, UCMERCED, Medical Imaging",
+    "paper": null,
+    "dataset": "Public facial drowsiness dataset",
     "metrics": {
-      "ssim": 0.924,
-      "ie": 1.45,
-      "ambe": 3.18,
-      "fsim": 0.891
+      "accuracy": 90.5,
+      "precision": 89.2,
+      "recall": 91.3
     },
-    "startDate": "2024-01",
-    "endDate": "2024-06",
+    "startDate": "2024-09",
+    "endDate": "2024-12",
     "featured": true,
     "tags": [
-      "Image Processing",
+      "Deep Learning",
       "Computer Vision",
-      "Clustering",
-      "Research"
+      "Mobile Development",
+      "Capstone Project",
+      "CNN",
+      "Android"
     ],
     "highlights": [
-      "Achieved SSIM score of 0.924 across benchmark datasets",
-      "Outperformed baseline methods by 15% in contrast enhancement",
-      "Published research paper with journal-backed methodology",
-      "Implemented 4 different clustering algorithms for comparison"
+      "Achieved 90%+ accuracy in drowsiness detection using CNN",
+      "Successfully integrated ML model with Android mobile application",
+      "Implemented RESTful API for model inference and data management",
+      "Real-time facial feature analysis for drowsiness detection",
+      "Capstone project completed as part of Bangkit Academy program"
     ],
     "order": 1
   },
   {
     "id": "proj-2",
-    "slug": "deep-steganography-robustness",
-    "title": "Robust Deep Steganography with AttenHideNet",
-    "shortDescription": "Adversarial training-enhanced deep steganography for robust image concealment",
-    "fullDescription": "Fine-tuned AttenHideNet architecture with adversarial training to improve robustness against steganalysis attacks. Implemented attention mechanisms for better information hiding while maintaining high visual quality. Tested on CelebA and COCO datasets with various attack scenarios including JPEG compression, Gaussian noise, and geometric transformations.",
-    "category": "Research",
+    "slug": "e-commerce-marketplace",
+    "title": "E-Commerce Marketplace Platform",
+    "shortDescription": "Multi-role marketplace system with admin, seller, and buyer functionalities built with Laravel",
+    "fullDescription": "Built a comprehensive e-commerce marketplace platform using Laravel and MySQL with three distinct user roles: Admin, Seller, and Buyer. The system features product management, shopping cart functionality, order processing through admin approval, and an inbox notification system. Developed collaboratively as a team of 4 members with full CRUD operations for all entities.",
+    "category": "Web Development",
     "technologies": [
-      "Python",
-      "TensorFlow",
-      "Keras",
-      "Adversarial Training",
-      "Attention Mechanisms"
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "Bootstrap",
+      "JavaScript",
+      "Blade Templates"
     ],
     "image": null,
-    "github": "https://github.com/yourusername/attenhidenet",
+    "github": "https://github.com/AdidyaAbimanyu/marketplace",
     "demo": null,
     "paper": null,
-    "dataset": "CelebA, COCO",
-    "metrics": {
-      "psnr": 42.5,
-      "ssim": 0.985,
-      "accuracy": 94.2
-    },
-    "startDate": "2024-03",
-    "endDate": "2024-08",
+    "dataset": null,
+    "metrics": null,
+    "startDate": "2024-06",
+    "endDate": "2024-06",
     "featured": true,
     "tags": [
-      "Deep Learning",
-      "Steganography",
-      "Adversarial Training",
-      "Security"
+      "Web Development",
+      "E-Commerce",
+      "Laravel",
+      "Full-Stack",
+      "Team Project"
     ],
     "highlights": [
-      "Improved robustness by 28% against steganalysis attacks",
-      "Maintained PSNR >40dB with high capacity data hiding",
-      "Implemented mixed precision training for 2x speedup",
-      "Robust against JPEG compression and noise attacks"
+      "Implemented multi-role authentication system (Admin, Seller, Buyer)",
+      "Built shopping cart with add-to-cart functionality",
+      "Developed order management with admin approval workflow",
+      "Created inbox notification system for order updates",
+      "Collaborative development with 4-member team"
     ],
     "order": 2
   },
   {
     "id": "proj-3",
-    "slug": "pso-batch-scheduling",
-    "title": "Batch Scheduling Optimization using PSO",
-    "shortDescription": "Particle Swarm Optimization for delivery batch scheduling and route optimization",
-    "fullDescription": "Developed an intelligent batch scheduling system using Particle Swarm Optimization (PSO) algorithm to optimize delivery routes and batch assignments. The system considers multiple constraints including time windows, vehicle capacity, and delivery priorities to minimize total delivery time and cost.",
-    "category": "Academic",
+    "slug": "portal-layanan-perumahan",
+    "title": "Portal Layanan Perumahan Miskin",
+    "shortDescription": "Government housing service portal with hierarchical admin system for managing low-income housing data",
+    "fullDescription": "Developed a comprehensive housing service portal using Laravel and MySQL for managing low-income housing programs. The system features hierarchical role-based access control with Super Admin and Regional Admin roles. Regional admins can manage their assigned areas, including CRUD operations for regions, households (KK), houses, and housing reports. The portal serves as a centralized platform for government housing data management and monitoring.",
+    "category": "Web Development",
     "technologies": [
-      "Python",
-      "Particle Swarm Optimization",
-      "NumPy",
-      "Pandas",
-      "Matplotlib"
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "Bootstrap",
+      "JavaScript",
+      "Blade Templates",
+      "Role-Based Access Control"
     ],
     "image": null,
-    "github": "https://github.com/yourusername/pso-scheduling",
+    "github": "https://github.com/AdidyaAbimanyu/Project-Pemweb-Laravel",
     "demo": null,
     "paper": null,
-    "dataset": "Custom delivery dataset",
-    "metrics": {
-      "efficiency": 87.5,
-      "costReduction": 23.4
-    },
-    "startDate": "2023-09",
-    "endDate": "2023-12",
+    "dataset": null,
+    "metrics": null,
+    "startDate": "2024-01",
+    "endDate": "2024-01",
     "featured": true,
     "tags": [
-      "Optimization",
-      "Algorithms",
-      "PSO",
-      "Operations Research"
+      "Web Development",
+      "Government Project",
+      "Laravel",
+      "RBAC",
+      "Full-Stack",
+      "Team Project"
     ],
     "highlights": [
-      "Reduced delivery time by 23% compared to traditional methods",
-      "Optimized batch sizes for 100+ daily deliveries",
-      "Real-time route recalculation under dynamic constraints",
-      "Scalable solution tested on datasets up to 1000 delivery points"
+      "Implemented hierarchical role-based access control (Super Admin & Regional Admin)",
+      "Built comprehensive CRUD system for regions, households, houses, and reports",
+      "Developed regional data management for localized housing administration",
+      "Created public visitor interface for housing service information",
+      "Academic project completed as part of Web Programming course"
     ],
     "order": 3
   },
   {
     "id": "proj-4",
     "slug": "portfolio-website",
-    "title": "Personal Portfolio Website",
-    "shortDescription": "Modern portfolio website with Token Terminal-inspired UI using Next.js and Shadcn",
-    "fullDescription": "Built a modern, responsive portfolio website using Next.js 16, Shadcn UI, and Framer Motion. Features smooth animations, dark/light theme toggle, and JSON-driven content management for easy updates. Designed with Token Terminal and Arkham Intelligence aesthetics in mind.",
-    "category": "Personal",
+    "title": "Modern Portfolio Website",
+    "shortDescription": "Sleek and modern portfolio website built with Next.js 15 and shadcn/ui components",
+    "fullDescription": "Built a contemporary portfolio website using the latest web technologies including Next.js 15, React 19, TypeScript, and shadcn/ui. Features smooth animations with Framer Motion, dark/light theme toggle with next-themes, and JSON-driven content management for easy updates. The design is inspired by modern crypto analytics platforms with a focus on clean aesthetics and user experience.",
+    "category": "Web Development",
     "technologies": [
       "Next.js",
       "React",
       "TypeScript",
       "Tailwind CSS",
       "Shadcn UI",
-      "Framer Motion"
+      "Framer Motion",
+      "Lucide Icons"
     ],
     "image": null,
-    "github": "https://github.com/yourusername/portfolio",
-    "demo": "https://yourportfolio.vercel.app",
+    "github": "https://github.com/AdidyaAbimanyu/portfolio-website",
+    "demo": null,
     "paper": null,
     "dataset": null,
     "metrics": null,
@@ -153,13 +157,15 @@
       "Web Development",
       "UI/UX",
       "Frontend",
-      "Portfolio"
+      "Portfolio",
+      "Next.js"
     ],
     "highlights": [
-      "Fully responsive design with smooth animations",
-      "JSON-driven content for easy maintenance",
-      "Dark/light theme with smooth transitions",
-      "Deployed on Vercel with CI/CD pipeline"
+      "Built with Next.js 15 and React 19 for optimal performance",
+      "Fully responsive design with smooth Framer Motion animations",
+      "JSON-driven content architecture for easy maintenance",
+      "Dark/light theme with seamless transitions",
+      "Modern UI inspired by Token Terminal and Arkham Intelligence"
     ],
     "order": 4
   }
