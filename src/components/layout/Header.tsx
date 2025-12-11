@@ -86,7 +86,7 @@ export default function Header() {
             {/* Social links - hidden on mobile */}
             <div className="hidden sm:flex items-center gap-1">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/AdidyaAbimanyu"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -100,7 +100,7 @@ export default function Header() {
                 </Button>
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/adidya-abimanyu/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -113,7 +113,7 @@ export default function Header() {
                   <Linkedin className="h-5 w-5" />
                 </Button>
               </a>
-              <a href="mailto:your.email@example.com" aria-label="Email">
+              <a href="mailto:adidyawork88@gmail.com" aria-label="Email">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -127,18 +127,16 @@ export default function Header() {
             <ThemeToggle />
 
             {/* Mobile menu button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md hover:bg-accent"
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5" />
               ) : (
                 <Menu className="h-5 w-5" />
               )}
-            </Button>
+            </button>
           </div>
         </nav>
       </motion.header>
@@ -173,7 +171,7 @@ export default function Header() {
           {/* Mobile social links */}
           <div className="flex items-center gap-2 pt-2 border-t border-border/40">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/AdidyaAbimanyu"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1"
@@ -184,7 +182,7 @@ export default function Header() {
               </Button>
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/adidya-abimanyu/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1"
