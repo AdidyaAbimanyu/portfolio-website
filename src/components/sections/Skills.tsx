@@ -45,7 +45,7 @@ export default function SkillsSection() {
         <FadeIn delay={0.4}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/10">
             <div className="text-center">
-              <p className="text-4xl font-bold text-primary mb-2">4+</p>
+              <p className="text-4xl font-bold text-primary mb-2">2+</p>
               <p className="text-sm text-muted-foreground">
                 Years of Experience
               </p>
@@ -71,7 +71,7 @@ export default function SkillsSection() {
               </p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-primary mb-2">10+</p>
+              <p className="text-4xl font-bold text-primary mb-2">3+</p>
               <p className="text-sm text-muted-foreground">Projects Built</p>
             </div>
           </div>
