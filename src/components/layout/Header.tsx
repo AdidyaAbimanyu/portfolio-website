@@ -8,6 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import NProgress from "nprogress";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -35,6 +36,10 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  const handleLinkClick = () => {
+    NProgress.start();
+  };
+
   return (
     <>
       <motion.header
@@ -50,7 +55,11 @@ export default function Header() {
       >
         <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold gradient-text group">
+          <Link 
+            href="/" 
+            onClick={handleLinkClick}
+            className="text-xl font-bold gradient-text group"
+          >
             <span className="group-hover:scale-110 inline-block transition-transform">
               Portfolio
             </span>
@@ -62,6 +71,7 @@ export default function Header() {
               <Link
                 key={item.path}
                 href={item.path}
+                onClick={handleLinkClick}
                 className={cn(
                   "relative text-sm font-medium transition-colors hover:text-primary",
                   pathname === item.path
@@ -157,6 +167,7 @@ export default function Header() {
             <Link
               key={item.path}
               href={item.path}
+              onClick={handleLinkClick}
               className={cn(
                 "text-sm font-medium py-2 px-4 rounded-lg transition-colors",
                 pathname === item.path

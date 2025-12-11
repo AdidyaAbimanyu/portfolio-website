@@ -2,30 +2,45 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { slideInLeft, slideInRight } from "@/lib/animations";
 
 interface SlideInProps {
   children: ReactNode;
-  direction?: "left" | "right";
+  direction?: "left" | "right" | "up" | "down";
   delay?: number;
+  duration?: number;
   className?: string;
+  initiallyVisible?: boolean;
 }
 
 export default function SlideIn({
   children,
   direction = "left",
   delay = 0,
-  className = "",
+  duration = 0.5,
+  className,
+  initiallyVisible = false,
 }: SlideInProps) {
-  const variants = direction === "left" ? slideInLeft : slideInRight;
+  const directions = {
+    left: { x: -100, y: 0 },
+    right: { x: 100, y: 0 },
+    up: { x: 0, y: -100 },
+    down: { x: 0, y: 100 },
+  };
+
+  const initialState = initiallyVisible 
+    ? { opacity: 1, x: 0, y: 0 }
+    : { opacity: 0, ...directions[direction] };
 
   return (
     <motion.div
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={variants}
-      transition={{ delay }}
+      initial={initialState}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        duration,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={className}
     >
       {children}

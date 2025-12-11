@@ -2,35 +2,36 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
 
 interface StaggerChildrenProps {
   children: ReactNode;
   className?: string;
   staggerDelay?: number;
-  childrenDelay?: number;
+  initiallyVisible?: boolean;
 }
 
 export default function StaggerChildren({
   children,
-  className = "",
+  className,
   staggerDelay = 0.1,
-  childrenDelay = 0.2,
+  initiallyVisible = false,
 }: StaggerChildrenProps) {
+  const containerVariants = {
+    hidden: { opacity: initiallyVisible ? 1 : 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: staggerDelay,
+      },
+    },
+  };
+
   return (
     <motion.div
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        ...staggerContainer,
-        animate: {
-          transition: {
-            staggerChildren: staggerDelay,
-            delayChildren: childrenDelay,
-          },
-        },
-      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
       className={className}
     >
       {children}
