@@ -4,6 +4,7 @@ import { useState } from "react";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 import ExperienceCard from "@/components/cards/ExperienceCard";
+import ExperienceModal from "@/components/modals/ExperienceModal";
 import { Button } from "@/components/ui/button";
 import { Briefcase } from "lucide-react";
 import experiencesData from "../../data/experiences.json";
@@ -11,6 +12,7 @@ import { Experience } from "@/types";
 
 export default function ExperienceSection() {
   const [showAll, setShowAll] = useState(false);
+  const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
   const experiences = experiencesData as Experience[];
   
   // Sort by order and show featured first
@@ -41,7 +43,11 @@ export default function ExperienceSection() {
         {/* Experience Cards */}
         <StaggerChildren className="space-y-6">
           {displayedExperiences.map((experience) => (
-            <ExperienceCard key={experience.id} experience={experience} />
+            <ExperienceCard
+              key={experience.id}
+              experience={experience}
+              onClick={() => setSelectedExperience(experience)}
+            />
           ))}
         </StaggerChildren>
 
@@ -59,6 +65,13 @@ export default function ExperienceSection() {
             </div>
           </FadeIn>
         )}
+
+        {/* Experience Detail Modal */}
+        <ExperienceModal
+          experience={selectedExperience}
+          isOpen={!!selectedExperience}
+          onClose={() => setSelectedExperience(null)}
+        />
       </div>
     </section>
   );
