@@ -35,8 +35,7 @@ export default function AboutPage() {
               About <span className="gradient-text">Me</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Passionate about building innovative solutions with AI and Machine
-              Learning
+              Passionate about solving real-world problems through automization.
             </p>
           </div>
         </FadeIn>
@@ -95,7 +94,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <Card className="p-6 text-center bg-card/50 backdrop-blur-sm">
               <Code2 className="h-8 w-8 mx-auto mb-3 text-primary" />
-              <p className="text-3xl font-bold mb-1">4+</p>
+              <p className="text-3xl font-bold mb-1">2+</p>
               <p className="text-sm text-muted-foreground">Years Coding</p>
             </Card>
             <Card className="p-6 text-center bg-card/50 backdrop-blur-sm">

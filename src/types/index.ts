@@ -14,7 +14,7 @@ export interface PersonalInfo {
   };
   avatar?: string;
   resume?: string;
-  interests?: string[];  // ← Tambahkan ini
+  interests?: string[];
 }
 
 // Experience
@@ -43,7 +43,7 @@ export interface Project {
   fullDescription: string;
   category: "Research" | "Personal" | "Academic" | "Open Source";
   technologies: string[];
-  image: string | null;  // ← Ganti dari string jadi string | null
+  image: string | null;
   github?: string | null;
   demo?: string | null;
   paper?: string | null;
@@ -99,13 +99,13 @@ export interface Publication {
   venue: string;
   year: number;
   status: "Published" | "Under Review" | "In Preparation" | "Accepted";
-  doi?: string | null;      // ← Sudah benar
-  pdf?: string | null;      // ← Sudah benar
-  arxiv?: string | null;    // ← Sudah benar
+  doi?: string | null;
+  pdf?: string | null;
+  arxiv?: string | null;
   abstract: string;
   tags: string[];
-  citations?: number | null; // ← Sudah benar
-  order?: number | null;     // ← Tambah | null
+  citations?: number | null;
+  order?: number | null;
 }
 
 // Certification
@@ -114,10 +114,9 @@ export interface Certification {
   name: string;
   issuer: string;
   date: string;
-  expiryDate?: string;
+  expiryDate?: string | null;
   credentialId?: string;
   credentialUrl?: string;
-  image?: string;
   skills?: string[];
   order?: number;
 }

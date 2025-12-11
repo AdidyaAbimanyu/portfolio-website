@@ -1,23 +1,19 @@
 {
-  "name": "Your Name",
-  "title": "Computer Science Student & ML Researcher",
-  "bio": "Passionate Computer Science student specializing in Image Processing, Deep Learning, and Computer Vision. Currently conducting research on image enhancement algorithms and deep steganography. Always eager to solve real-world problems through innovative AI solutions.",
+  "name": "Adidya Abimanyu",
+  "title": "Computer Science Student",
+  "bio": "Passionate about solving real-world problems through automization.",
   "location": "Indonesia",
-  "email": "your.email@example.com",
-  "phone": "+62 812 3456 7890",
+  "email": "adidyawork88@gmail.com",
+  "phone": "+62 858 9046 7991",
   "social": {
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourusername",
-    "twitter": "https://twitter.com/yourusername",
-    "scholar": "https://scholar.google.com/citations?user=YOUR_ID"
+    "github": "https://github.com/AdidyaAbimanyu",
+    "linkedin": "https://www.linkedin.com/in/adidya-abimanyu/"
   },
   "avatar": "/images/avatar.jpg",
   "resume": "/resume.pdf",
   "interests": [
-    "Image Processing",
     "Deep Learning",
     "Computer Vision",
-    "Optimization Algorithms",
     "Research & Development"
   ]
 }

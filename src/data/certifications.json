@@ -1,71 +1,99 @@
 [
   {
     "id": "cert-1",
-    "name": "Deep Learning Specialization",
-    "issuer": "DeepLearning.AI (Coursera)",
-    "date": "2023-06",
+    "name": "Crash Course on Python",
+    "issuer": "Google",
+    "date": "2024-09",
     "expiryDate": null,
-    "credentialId": "ABC123XYZ",
-    "credentialUrl": "https://coursera.org/verify/specialization/ABC123XYZ",
-    "image": "/images/certifications/deeplearning-ai.jpg",
+    "credentialId": "Z38OHR5I4Y73",
+    "credentialUrl": "https://www.coursera.org/account/accomplishments/records/Z38OHR5I4Y73",
     "skills": [
-      "Deep Learning",
-      "Neural Networks",
-      "TensorFlow",
-      "CNN",
-      "RNN"
+      "Computational Thinking",
+      "Development Environment",
+      "Scripting",
+      "Computer Programming",
+      "Integrated Development Environments",
+      "Debugging",
+      "Data Structures",
+      "Python Programming"
     ],
     "order": 1
   },
   {
     "id": "cert-2",
-    "name": "Machine Learning",
-    "issuer": "Stanford University (Coursera)",
-    "date": "2022-12",
+    "name": "Machine Learning Specialization",
+    "issuer": "DeepLearning.AI, Stanford University",
+    "date": "2024-10",
     "expiryDate": null,
-    "credentialId": "DEF456ABC",
-    "credentialUrl": "https://coursera.org/verify/DEF456ABC",
-    "image": "/images/certifications/stanford-ml.jpg",
+    "credentialId": "YCHS3NCZU8VI",
+    "credentialUrl": "https://www.coursera.org/account/accomplishments/specialization/YCHS3NCZU8VI",
     "skills": [
-      "Machine Learning",
-      "Python",
-      "Algorithms",
-      "Data Science"
+      "Supervised Machine Learning: Regression and Classification",
+      "Advanced Learning Algorithms",
+      "Unsupervised Learning, Recommenders, Reinforcement Learning"
     ],
     "order": 2
   },
   {
     "id": "cert-3",
-    "name": "TensorFlow Developer Certificate",
-    "issuer": "Google",
-    "date": "2023-09",
-    "expiryDate": "2026-09",
-    "credentialId": "GHI789DEF",
-    "credentialUrl": "https://www.credential.net/GHI789DEF",
-    "image": "/images/certifications/tensorflow-cert.jpg",
+    "name": "DeepLearning.AI TensorFlow Developer Specialization",
+    "issuer": "DeepLearning.AI",
+    "date": "2024-11",
+    "expiryDate": null,
+    "credentialId": "45KC021734O9",
+    "credentialUrl": "https://www.coursera.org/account/accomplishments/specialization/45KC021734O9",
     "skills": [
-      "TensorFlow",
-      "Keras",
-      "Deep Learning",
-      "Model Deployment"
+      "Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning",
+      "Convolutional Neural Networks in TensorFlow",
+      "Natural Language Processing in TensorFlow",
+      "Sequences, Time Series and Prediction"
     ],
     "order": 3
   },
   {
     "id": "cert-4",
-    "name": "Computer Vision Specialization",
-    "issuer": "University at Buffalo (Coursera)",
-    "date": "2023-03",
+    "name": "Browser-based Models with TensorFlow.js",
+    "issuer": "DeepLearning.AI",
+    "date": "2024-11",
     "expiryDate": null,
-    "credentialId": "JKL012GHI",
-    "credentialUrl": "https://coursera.org/verify/specialization/JKL012GHI",
-    "image": "/images/certifications/computer-vision.jpg",
+    "credentialId": "J3LX6146BBJX",
+    "credentialUrl": "https://www.coursera.org/account/accomplishments/records/J3LX6146BBJX",
     "skills": [
+      "Deep Learning",
+      "Tensorflow",
+      "Real Time Data",
+      "Data Processing",
+      "Keras (Neural Network Library)",
       "Computer Vision",
-      "OpenCV",
-      "Image Processing",
-      "Object Detection"
+      "JSON",
+      "Applied Machine Learning",
+      "Web Applications",
+      "Machine Learning",
+      "Image Analysis",
+      "Javascript"
     ],
     "order": 4
+  },
+  {
+    "id": "cert-5",
+    "name": "Device-based Models with TensorFlow Lite",
+    "issuer": "DeepLearning.AI",
+    "date": "2024-11",
+    "expiryDate": null,
+    "credentialId": "XJ8TNQF1XP9E",
+    "credentialUrl": "https://www.coursera.org/account/accomplishments/records/XJ8TNQF1XP9E",
+    "skills": [
+      "Tensorflow",
+      "Embedded Systems",
+      "Computer Vision",
+      "Mobile Development",
+      "Machine Learning Methods",
+      "Swift Programming",
+      "Applied Machine Learning",
+      "iOS Development",
+      "Machine Learning",
+      "Android Development"
+    ],
+    "order": 5
   }
 ]
