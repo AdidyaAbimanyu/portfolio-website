@@ -41,16 +41,14 @@ export default function Footer() {
           {/* Brand section */}
           <div className="md:col-span-2">
             <h3 className="text-xl font-bold gradient-text mb-3">
-              Your Name
+              Adidya Abimanyu
             </h3>
             <p className="text-sm text-muted-foreground mb-4 max-w-md">
-              Computer Science Student & ML Researcher passionate about Image
-              Processing, Deep Learning, and solving real-world problems through
-              technology.
+              Computer Science Student &  solving real-world problems through technology.
             </p>
             <div className="flex items-center gap-2">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/adidyaabimanyu"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -64,7 +62,7 @@ export default function Footer() {
                 </Button>
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/adidyaabimanyu"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -77,7 +75,7 @@ export default function Footer() {
                   <Linkedin className="h-5 w-5" />
                 </Button>
               </a>
-              <a href="mailto:your.email@example.com" aria-label="Email">
+              <a href="mailto:adidyawork88@example.com" aria-label="Email">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -128,7 +126,7 @@ export default function Footer() {
         {/* Bottom section */}
         <div className="pt-8 border-t border-border/40 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} Your Name. Built with{" "}
+            © {new Date().getFullYear()} Adidya Abimanyu. Built with{" "}
             <Heart className="inline h-4 w-4 text-red-500 fill-current" /> using
             Next.js & Shadcn UI
           </p>
