@@ -6,7 +6,6 @@ import StaggerChildren from "@/components/animations/StaggerChildren";
 import ProjectCard from "@/components/cards/ProjectCard";
 import ProjectModal from "@/components/modals/ProjectModal";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Rocket } from "lucide-react";
 import projectsData from "../../data/projects.json";
 import { Project } from "@/types";

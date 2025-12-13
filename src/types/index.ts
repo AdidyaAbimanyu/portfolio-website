@@ -130,11 +130,13 @@ export interface BlogPost {
   content: string;
   coverImage?: string;
   tags: string[];
+  category: string;
   publishedAt: string;
-  updatedAt?: string;
-  readTime?: number;
-  featured?: boolean;
+  readTime: number;
+  featured: boolean;
+  author: string;
 }
+
 
 // Navigation Item
 export interface NavItem {

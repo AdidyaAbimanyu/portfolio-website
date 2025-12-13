@@ -3,14 +3,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProgressBar from "@/components/ProgressBar";
-import PageTransition from "@/components/animations/PageTransition";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio - Adidya Abimanyu",
-  description: "Computer Science Student",
+  title: "Adidya Abimanyu - Portfolio",
+  description: "Computer Science Student & Web Developer",
 };
 
 export default function RootLayout({
@@ -27,11 +26,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ProgressBar /> {/* ← TAMBAH INI */}
+          <ProgressBar />
           <Header />
-          <PageTransition>
-            <main>{children}</main>
-          </PageTransition>
+          <main>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

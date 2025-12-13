@@ -10,60 +10,18 @@ import { Input } from "@/components/ui/input";
 import { Calendar, Clock, Search, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
-
-// Dummy blog data - nanti bisa diganti dengan real data
-const blogPosts = [
-  {
-    id: "1",
-    slug: "image-enhancement-techniques",
-    title: "Advanced Image Enhancement Techniques in Computer Vision",
-    excerpt:
-      "Exploring modern approaches to image enhancement using deep learning and traditional methods.",
-    content: "",
-    coverImage: "/images/blog/blog-1.jpg",
-    tags: ["Computer Vision", "Image Processing", "Deep Learning"],
-    publishedAt: "2024-12-01",
-    readTime: 8,
-    featured: true,
-  },
-  {
-    id: "2",
-    slug: "deep-learning-optimization",
-    title: "Optimizing Deep Learning Models for Production",
-    excerpt:
-      "Best practices for deploying and optimizing deep learning models in production environments.",
-    content: "",
-    coverImage: "/images/blog/blog-2.jpg",
-    tags: ["Deep Learning", "Optimization", "Production"],
-    publishedAt: "2024-11-25",
-    readTime: 12,
-    featured: true,
-  },
-  {
-    id: "3",
-    slug: "clustering-algorithms-comparison",
-    title: "Comparing Clustering Algorithms: K-Means, FCM, GMM, and HDBSCAN",
-    excerpt:
-      "A comprehensive comparison of popular clustering algorithms and their use cases.",
-    content: "",
-    coverImage: "/images/blog/blog-3.jpg",
-    tags: ["Machine Learning", "Clustering", "Algorithms"],
-    publishedAt: "2024-11-15",
-    readTime: 10,
-    featured: false,
-  },
-];
+import blogsData from "@/data/blogs.json";
+import { BlogPost } from "@/types";
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const blogPosts = blogsData as BlogPost[];
 
-  // Get all unique tags
   const allTags = Array.from(
     new Set(blogPosts.flatMap((post) => post.tags))
   );
 
-  // Filter posts
   const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
       searchQuery === "" ||
@@ -73,10 +31,15 @@ export default function BlogPage() {
     return matchesSearch && matchesTag;
   });
 
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+  });
+
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-6xl">
-        {/* Header */}
         <FadeIn>
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-4">
@@ -92,10 +55,8 @@ export default function BlogPage() {
           </div>
         </FadeIn>
 
-        {/* Search & Tags */}
         <FadeIn delay={0.2}>
           <div className="mb-12 space-y-4">
-            {/* Search */}
             <div className="relative max-w-xl mx-auto">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -106,7 +67,6 @@ export default function BlogPage() {
               />
             </div>
 
-            {/* Tags Filter */}
             <div className="flex flex-wrap justify-center gap-2">
               <Button
                 variant={selectedTag === null ? "default" : "outline"}
@@ -129,28 +89,24 @@ export default function BlogPage() {
           </div>
         </FadeIn>
 
-        {/* Results count */}
         <FadeIn delay={0.3}>
           <p className="text-muted-foreground mb-6">
-            {filteredPosts.length} article{filteredPosts.length !== 1 ? "s" : ""}{" "}
-            found
+            {sortedPosts.length} article{sortedPosts.length !== 1 ? "s" : ""} found
           </p>
         </FadeIn>
 
-        {/* Blog Posts Grid */}
         <StaggerChildren>
           <motion.div layout className="grid md:grid-cols-2 gap-8">
-            {filteredPosts.map((post) => (
+            {sortedPosts.map((post) => (
               <motion.div
                 key={post.id}
                 layout
                 variants={fadeInUp}
                 initial="initial"
-                animate="animate"
-                exit="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.3 }}
               >
                 <Card className="h-full overflow-hidden hover:border-primary/50 transition-all cursor-pointer group bg-card/50 backdrop-blur-sm">
-                  {/* Cover Image */}
                   <div className="relative w-full aspect-video overflow-hidden bg-muted">
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10 group-hover:scale-105 transition-transform duration-300">
                       <span className="text-6xl">📝</span>
@@ -164,21 +120,16 @@ export default function BlogPage() {
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className="p-6 space-y-4">
-                    {/* Meta */}
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
                         <span>
-                          {new Date(post.publishedAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            }
-                          )}
+                          {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })}
                         </span>
                       </div>
                       <div className="flex items-center gap-1">
@@ -187,17 +138,14 @@ export default function BlogPage() {
                       </div>
                     </div>
 
-                    {/* Title */}
                     <h3 className="text-2xl font-bold group-hover:text-primary transition-colors line-clamp-2">
                       {post.title}
                     </h3>
 
-                    {/* Excerpt */}
                     <p className="text-muted-foreground line-clamp-3">
                       {post.excerpt}
                     </p>
 
-                    {/* Tags */}
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
                         <Badge key={tag} variant="secondary" className="text-xs">
@@ -206,9 +154,12 @@ export default function BlogPage() {
                       ))}
                     </div>
 
-                    {/* Read More */}
-                    <Button variant="ghost" className="w-full group-hover:text-primary">
-                      Read More →
+                    <Button
+                      variant="ghost"
+                      className="w-full group-hover:text-primary"
+                      disabled
+                    >
+                      Coming Soon →
                     </Button>
                   </div>
                 </Card>
@@ -217,7 +168,6 @@ export default function BlogPage() {
           </motion.div>
         </StaggerChildren>
 
-        {/* Empty State */}
         {filteredPosts.length === 0 && (
           <FadeIn>
             <div className="text-center py-20">
@@ -237,13 +187,11 @@ export default function BlogPage() {
           </FadeIn>
         )}
 
-        {/* Coming Soon Notice */}
         <FadeIn delay={0.5}>
           <Card className="p-8 mt-12 text-center bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
             <h3 className="text-2xl font-bold mb-2">More Articles Coming Soon!</h3>
             <p className="text-muted-foreground">
-              I'm working on more technical articles about AI, Machine Learning, and
-              Software Development. Stay tuned! 🚀
+              I'm working on technical articles about my projects, research findings, and development experiences. Stay tuned! 🚀
             </p>
           </Card>
         </FadeIn>
