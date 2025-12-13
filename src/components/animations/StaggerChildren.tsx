@@ -17,7 +17,7 @@ export default function StaggerChildren({
   initiallyVisible = false,
 }: StaggerChildrenProps) {
   const containerVariants = {
-    hidden: { opacity: initiallyVisible ? 1 : 0 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
@@ -26,11 +26,24 @@ export default function StaggerChildren({
     },
   };
 
+  if (initiallyVisible) {
+    return (
+      <motion.div
+        initial="visible"
+        animate="visible"
+        variants={containerVariants}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
       className={className}
     >

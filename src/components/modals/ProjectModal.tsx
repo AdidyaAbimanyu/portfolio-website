@@ -97,7 +97,7 @@ export default function ProjectModal({
                       {key}
                     </p>
                     <p className="text-2xl font-bold text-primary">
-                      {typeof value === "number" ? value.toFixed(3) : value}
+                      {typeof value === "number" ? value.toFixed(2) : value}
                     </p>
                   </div>
                 ))}

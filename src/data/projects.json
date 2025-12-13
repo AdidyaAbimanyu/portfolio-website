@@ -22,9 +22,7 @@
     "paper": null,
     "dataset": "Public facial drowsiness dataset",
     "metrics": {
-      "accuracy": 90.5,
-      "precision": 89.2,
-      "recall": 91.3
+      "accuracy": 99
     },
     "startDate": "2024-09",
     "endDate": "2024-12",

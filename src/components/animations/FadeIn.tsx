@@ -18,11 +18,28 @@ export default function FadeIn({
   className,
   initiallyVisible = false,
 }: FadeInProps) {
+  if (initiallyVisible) {
+    return (
+      <motion.div
+        initial={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration,
+          delay,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
-      initial={{ opacity: initiallyVisible ? 1 : 0, y: initiallyVisible ? 0 : 20 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{
         duration,
         delay,

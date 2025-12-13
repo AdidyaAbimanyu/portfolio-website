@@ -27,15 +27,28 @@ export default function SlideIn({
     down: { x: 0, y: 100 },
   };
 
-  const initialState = initiallyVisible 
-    ? { opacity: 1, x: 0, y: 0 }
-    : { opacity: 0, ...directions[direction] };
+  if (initiallyVisible) {
+    return (
+      <motion.div
+        initial={{ opacity: 1, x: 0, y: 0 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{
+          duration,
+          delay,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
-      initial={initialState}
+      initial={{ opacity: 0, ...directions[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{
         duration,
         delay,

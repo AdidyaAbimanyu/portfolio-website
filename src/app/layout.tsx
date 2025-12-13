@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProgressBar from "@/components/ProgressBar";
+import PageTransition from "@/components/animations/PageTransition";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,7 +29,9 @@ export default function RootLayout({
         >
           <ProgressBar /> {/* ← TAMBAH INI */}
           <Header />
-          <main>{children}</main>
+          <PageTransition>
+            <main>{children}</main>
+          </PageTransition>
           <Footer />
         </ThemeProvider>
       </body>
