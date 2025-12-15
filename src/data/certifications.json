@@ -95,5 +95,21 @@
       "Android Development"
     ],
     "order": 5
+  },
+  {
+    "id": "cert-6",
+    "name": "Blockchain Basics",
+    "issuer": "Cyprin Updraft ",
+    "date": "2024-12",
+    "expiryDate": null,
+    "credentialId": "YQQRG0ZMYDHO",
+    "credentialUrl": "https://profiles.cyfrin.io/u/adidyaabimanyu07/achievements/blockchain-basics",
+    "skills": [
+      "Blockchain Fundamentals",
+      "Cryptocurrency",
+      "Smart Contracts",
+      "Decentralized Applications"
+    ],
+    "order": 6
   }
 ]
