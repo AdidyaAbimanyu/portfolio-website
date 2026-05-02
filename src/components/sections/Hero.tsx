@@ -67,7 +67,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-xl md:text-2xl text-muted-foreground"
             >
-              Computer Science Student
+              Informatics Student
             </motion.p>
 
             <motion.p

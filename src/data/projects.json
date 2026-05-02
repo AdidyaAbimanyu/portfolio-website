@@ -16,7 +16,7 @@
       "REST API",
       "OpenCV"
     ],
-    "image": null,
+    "image": "/images/projects/sleepwell.png",
     "github": "https://github.com/Captone-C242-PS571",
     "demo": null,
     "paper": null,
@@ -59,7 +59,7 @@
       "JavaScript",
       "Blade Templates"
     ],
-    "image": null,
+    "image": "/images/projects/marketplace.png",
     "github": "https://github.com/AdidyaAbimanyu/marketplace",
     "demo": null,
     "paper": null,
@@ -100,7 +100,7 @@
       "Blade Templates",
       "Role-Based Access Control"
     ],
-    "image": null,
+    "image": "/images/projects/plpm.png",
     "github": "https://github.com/AdidyaAbimanyu/Project-Pemweb-Laravel",
     "demo": null,
     "paper": null,
@@ -142,7 +142,7 @@
       "Framer Motion",
       "Lucide Icons"
     ],
-    "image": null,
+    "image": "/images/projects/portofolio.png",
     "github": "https://github.com/AdidyaAbimanyu/portfolio-website",
     "demo": null,
     "paper": null,

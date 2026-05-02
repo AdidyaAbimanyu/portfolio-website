@@ -109,7 +109,7 @@ export default function AboutPage() {
             </Card>
             <Card className="p-6 text-center bg-card/50 backdrop-blur-sm">
               <GraduationCap className="h-8 w-8 mx-auto mb-3 text-primary" />
-              <p className="text-3xl font-bold mb-1">3.8+</p>
+              <p className="text-3xl font-bold mb-1">3.5+</p>
               <p className="text-sm text-muted-foreground">GPA</p>
             </Card>
           </div>
