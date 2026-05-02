@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProgressBar from "@/components/ProgressBar";
+import { Suspense } from "react";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,10 +27,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ProgressBar />
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <Suspense fallback={null}>
+            <ProgressBar />
+          </Suspense>
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
+              <main>{children}</main>
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>
