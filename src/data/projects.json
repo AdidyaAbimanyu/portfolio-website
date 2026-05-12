@@ -166,5 +166,48 @@
       "Modern UI inspired by Token Terminal and Arkham Intelligence"
     ],
     "order": 4
+  },
+  {
+    "id": "proj-5",
+    "slug": "multi-doc-ai-chat",
+    "title": "Multi-Doc AI Chat (RAG System)",
+    "shortDescription": "Intelligent chatbot for interacting with multiple documents using RAG with Llama 3.3 and Hugging Face embeddings",
+    "fullDescription": "Built a Retrieval-Augmented Generation (RAG) chatbot application using Streamlit and LangChain that allows users to chat with their personal documents (PDF, DOCX, TXT). The system uses Llama 3.3 70B via Groq for fast responses and Hugging Face embeddings for efficient document processing. Features smart citations with source references, session memory for conversation context, and ChromaDB as vector store.",
+    "category": "Machine Learning",
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "LangChain",
+      "Groq",
+      "Llama 3.3",
+      "Hugging Face",
+      "ChromaDB",
+      "RAG"
+    ],
+    "image": "/images/projects/rag.png",
+    "github": "https://github.com/AdidyaAbimanyu/rag_llm_pdf",
+    "demo": null,
+    "paper": null,
+    "dataset": null,
+    "metrics": null,
+    "startDate": "2025-03",
+    "endDate": "2025-03",
+    "featured": true,
+    "tags": [
+      "Machine Learning",
+      "NLP",
+      "RAG",
+      "Streamlit",
+      "LangChain",
+      "LLM"
+    ],
+    "highlights": [
+      "Multi-format document support (PDF, DOCX, TXT) with 10MB file limit",
+      "Powered by Llama 3.3 70B via Groq for fast and accurate answers",
+      "Smart citation system with file name and page references",
+      "Conversation memory for contextual follow-up questions",
+      "Efficient embedding processing using Hugging Face Inference API"
+    ],
+    "order": 5
   }
 ]
