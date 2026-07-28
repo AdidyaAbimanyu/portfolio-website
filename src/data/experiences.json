@@ -14,7 +14,6 @@
       "Developed Knowledge Management System (KMS) website from scratch using PHP and MySQL",
       "Designed and implemented database architecture for efficient knowledge sharing and storage",
       "Built Mixed Reality (MR) train prototype using Unity and Blender for immersive training simulations",
-      "Created 3D train models and interactive MR environments for practical training scenarios",
       "Collaborated with MTRE team to digitize training workflows and improve operational efficiency",
       "Documented technical specifications and user manuals for developed systems"
     ],
@@ -44,11 +43,9 @@
     "description": "Developed full-featured news portal website 'WiNews' with complete Content Management System functionality using Laravel framework.",
     "responsibilities": [
       "Built 'WiNews' news portal from ground up using Laravel and MySQL with full CMS capabilities",
-      "Implemented article creation, editing, publishing, and management system with Laravel Eloquent ORM",
+      "Implemented article creation, editing, and management system with Laravel Eloquent ORM",
       "Developed user authentication and role-based access control Admin using Laravel middleware",
-      "Created responsive front-end design for optimal reading experience across devices",
-      "Integrated media management system for images with Laravel file storage",
-      "Implemented RESTful API endpoints for content delivery and integration"
+      "Integrated media management system for images with Laravel file storage"
     ],
     "technologies": [
       "Laravel",
@@ -57,7 +54,6 @@
       "JavaScript",
       "Bootstrap",
       "Blade Templates",
-      "RESTful API",
       "CMS Development"
     ],
     "featured": true,
@@ -76,9 +72,8 @@
     "responsibilities": [
       "Completed advanced courses: Digital Image Processing, Web Programming, Database Systems, Software Engineering",
       "Developed multiple academic projects including web applications and machine learning models",
-      "Active participation in coding competitions and hackathons",
-      "Collaborated on group projects using Agile methodology",
-      "Conducted research on image enhancement algorithms and deep learning applications"
+      "Collaborated on group projects using Waterfall methodology",
+      "Conducted research on image steganography and deep learning applications"
     ],
     "technologies": [
       "Python",
