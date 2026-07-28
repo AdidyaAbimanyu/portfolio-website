@@ -195,22 +195,24 @@ export default function AboutPage() {
 
         {/* Certifications Section */}
         <FadeIn delay={0.4}>
-          <div>
+          <div className="w-full overflow-hidden"> {/* Tambahan pengaman wrapper */}
             <div className="flex items-center gap-3 mb-8 pb-3 border-b border-border/40">
               <Award className="h-5 w-5 text-muted-foreground" />
               <h2 className="text-2xl font-bold tracking-tight text-foreground">Certifications</h2>
             </div>
 
-            <StaggerChildren className="grid md:grid-cols-2 gap-6">
+            {/* PERBAIKAN: Tambahkan grid-cols-1 dan w-full di sini */}
+            <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
               {certifications.map((cert) => (
-                <motion.div key={cert.id} variants={fadeInUp} className="h-full">
-                  <Card className="p-6 md:p-8 h-full flex flex-col justify-between border-border/50 hover:border-foreground/30 transition-all bg-background shadow-sm">
+                <motion.div key={cert.id} variants={fadeInUp} className="h-full min-w-0">
+                  <Card className="p-6 md:p-8 h-full flex flex-col justify-between border-border/50 hover:border-foreground/30 transition-all bg-background shadow-sm overflow-hidden">
+                    
                     <div className="space-y-4">
-                      <div>
-                        <h3 className="text-lg font-bold tracking-tight text-foreground mb-1">
+                      <div className="min-w-0"> {/* Pengaman untuk teks panjang */}
+                        <h3 className="text-lg font-bold tracking-tight text-foreground mb-1 break-words">
                           {cert.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p className="text-sm text-muted-foreground font-medium truncate">
                           {cert.issuer}
                         </p>
                       </div>
@@ -244,7 +246,7 @@ export default function AboutPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Verify Credential <ArrowUpRight className="ml-1.5 h-3.5 w-3.5 opacity-70" />
+                            Verify Credential <ArrowUpRight className="ml-1.5 h-3.5 w-3.5 opacity-70 shrink-0" />
                           </a>
                         </Button>
                       </div>
