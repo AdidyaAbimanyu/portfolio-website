@@ -12,32 +12,31 @@ export default function ExperiencePage() {
   const sortedExperiences = [...experiences].sort((a, b) => a.order - b.order);
 
   return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
+    <div className="min-h-screen pt-28 pb-24 px-6 md:px-12 lg:px-24">
+      <div className="container mx-auto max-w-4xl">
+        
         {/* Header */}
         <FadeIn>
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-4">
-              <Briefcase className="h-4 w-4" />
-              <span className="text-sm font-medium">Career Journey</span>
+          <div className="flex flex-col items-start mb-16 space-y-4">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary/30 border border-border/50 text-sm font-medium">
+              <Briefcase className="h-4 w-4 text-muted-foreground" />
+              <span className="text-muted-foreground">Career History</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">
-              Work <span className="gradient-text">Experience</span>
+            
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+              Work Experience.
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              My professional journey and contributions to various organizations
+            
+            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              A comprehensive timeline of my professional roles, engineering contributions, and career trajectory.
             </p>
           </div>
         </FadeIn>
 
         {/* Timeline */}
-        <StaggerChildren className="space-y-8">
-          {sortedExperiences.map((experience, index) => (
+        <StaggerChildren className="space-y-6">
+          {sortedExperiences.map((experience) => (
             <div key={experience.id} className="relative">
-              {/* Timeline line */}
-              {index !== sortedExperiences.length - 1 && (
-                <div className="absolute left-8 top-24 bottom-0 w-0.5 bg-border/50 -translate-x-1/2 hidden md:block" />
-              )}
               <ExperienceCard experience={experience} />
             </div>
           ))}

@@ -2,228 +2,106 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
+import { ArrowUpRight, Download, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-      <div className="absolute inset-0 -z-10">
-        <div className="hero-gradient" />
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
-        />
-      </div>
+    <section className="relative min-h-screen flex items-center pt-20 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:24px_24px] opacity-50" />
 
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="inline-block">
-                <span className="text-sm font-medium px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20">
-                  👋 Welcome to my portfolio
-                </span>
-              </div>
-            </motion.div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-transparent to-transparent" />
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-5xl md:text-7xl font-bold leading-tight"
-            >
-              Hi, I'm <span className="gradient-text">Adidya Abimanyu</span>
-            </motion.h1>
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-8">
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-xl md:text-2xl text-muted-foreground"
-            >
-              Informatics Student
-            </motion.p>
+          {/* Bagian Teks */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex-1 flex flex-col items-start space-y-8"
+          >
+            {/* Status Badge */}
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-sm font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-muted-foreground">Available for new opportunities</span>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="text-base md:text-lg text-muted-foreground max-w-xl"
-            >
-              Specializing in{" "}
-              <span className="text-primary font-medium">Web Development</span>,{" "}
-              <span className="text-primary font-medium">Machine Learning</span>, and{" "}
-              <span className="text-primary font-medium">Deep Learning</span>. Passionate
-              about solving real-world problems through Automization.
-            </motion.p>
+            {/* Headline */}
+            <div className="space-y-4">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground">
+                Adidya Abimanyu
+              </h1>
+              <h2 className="text-2xl sm:text-3xl font-medium text-muted-foreground">
+                Informatics Student & Developer.
+              </h2>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="flex flex-wrap gap-4"
-            >
+            {/* Deskripsi Singkat */}
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
+              Specializing in <strong className="text-foreground font-semibold">Web Development, </strong>
+              <strong className="text-foreground font-semibold">Machine Learning, and </strong>
+              <strong className="text-foreground font-semibold">Deep Learning.</strong>
+              Passionate about solving real-world problems through intelligent automation.
+            </p>
+
+            {/* Aksi & Sosial */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link href="/projects">
-                <Button size="lg" className="group">
-                  View My Work
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <Button size="lg" className="h-12 px-6 rounded-md font-medium group">
+                  View Projects
+                  <ArrowUpRight className="ml-2 h-4 w-4 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Button>
               </Link>
+
               <a href="/resume.pdf" download>
-                <Button size="lg" variant="outline">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download CV
+                <Button size="lg" variant="outline" className="h-12 px-6 rounded-md font-medium">
+                  <Download className="mr-2 h-4 w-4 opacity-70" />
+                  Resume
                 </Button>
               </a>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="flex items-center gap-4 pt-4"
-            >
-              <span className="text-sm text-muted-foreground">Connect with me:</span>
-              <div className="flex gap-2">
-                <a
-                  href="https://github.com/AdidyaAbimanyu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="ghost" size="icon" className="hover:text-primary">
-                    <Github className="h-5 w-5" />
-                  </Button>
+              <div className="flex items-center gap-2 ml-2 sm:ml-4 border-l pl-4 sm:pl-6 border-border">
+                <a href="https://github.com/AdidyaAbimanyu" target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground transition-colors">
+                  <Github className="h-5 w-5" />
+                  <span className="sr-only">GitHub</span>
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/adidya-abimanyu/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="ghost" size="icon" className="hover:text-primary">
-                    <Linkedin className="h-5 w-5" />
-                  </Button>
+                <a href="https://www.linkedin.com/in/adidya-abimanyu/" target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground transition-colors">
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">LinkedIn</span>
                 </a>
               </div>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="relative"
-          >
-            <motion.div
-              animate={{
-                y: [0, -20, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="relative z-10"
-            >
-              <div className="w-full aspect-square max-w-md mx-auto rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm border border-primary/20 glow-blue p-8 flex items-center justify-center overflow-hidden">
-                <Image
-                  src="/images/avatar.jpg"
-                  alt="Adidya Abimanyu"
-                  width={300}
-                  height={300}
-                  className="rounded-xl object-cover"
-                  priority
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              animate={{
-                y: [0, 10, 0],
-                rotate: [0, 5, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -top-4 -right-4 bg-card border border-border rounded-lg p-3 shadow-lg"
-            >
-              <div className="text-2xl">🎓</div>
-            </motion.div>
-
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, -5, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-              }}
-              className="absolute -bottom-4 -left-4 bg-card border border-border rounded-lg p-3 shadow-lg"
-            >
-              <div className="text-2xl">🚀</div>
-            </motion.div>
+            </div>
           </motion.div>
+
+          {/* Bagian Gambar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            className="flex-1 w-full max-w-md lg:max-w-lg relative"
+          >
+            {/* Frame untuk Gambar */}
+            <div className="aspect-[4/5] relative rounded-2xl overflow-hidden bg-muted group">
+              <Image
+                src="/images/avatar.jpg"
+                alt="Adidya Abimanyu"
+                fill
+                className="object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+            </div>
+          </motion.div>
+
         </div>
       </div>
-
-      <motion.div
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm text-muted-foreground">Scroll down</span>
-          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
-            <motion.div
-              animate={{
-                y: [0, 12, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="w-1.5 h-1.5 bg-primary rounded-full mt-2"
-            />
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 }

@@ -1,10 +1,10 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Building2, MapPin, Calendar, Briefcase } from "lucide-react";
+import { Building2, MapPin, Calendar, Briefcase, Star, ArrowRight } from "lucide-react";
 import { Experience } from "@/types";
-import { formatDate, calculateDuration, getTechColor } from "@/lib/utils";
+import { formatDate, calculateDuration, getTechColor, cn } from "@/lib/utils";
 
 interface ExperienceModalProps {
   experience: Experience | null;
@@ -21,102 +21,106 @@ export default function ExperienceModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold gradient-text">
-            {experience.title}
-          </DialogTitle>
-        </DialogHeader>
+      <DialogContent className="max-w-3xl p-0 gap-0 overflow-hidden bg-background border-border/50">
+        
+        {/* Header Section */}
+        <div className="p-6 md:p-8 border-b border-border/50 bg-muted/10">
+          <DialogHeader className="mb-6 text-left">
+            <DialogTitle className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
+              {experience.title}
+            </DialogTitle>
+            <DialogDescription className="sr-only">
+              Details about my role as {experience.title} at {experience.company}
+            </DialogDescription>
+          </DialogHeader>
 
-        <div className="space-y-6">
-          {/* Company Info */}
-          <div className="flex items-start gap-4">
-            <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-2xl flex-shrink-0">
-              {experience.company
-                .split(" ")
-                .map((word) => word[0])
-                .join("")
-                .slice(0, 2)}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <div className="w-12 h-12 rounded-md bg-background border border-border/50 flex items-center justify-center flex-shrink-0 shadow-sm">
+              <Building2 className="h-5 w-5 text-muted-foreground" />
             </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold flex items-center gap-2">
-                <Building2 className="h-5 w-5 text-primary" />
-                {experience.company}
-              </h3>
-              <div className="flex flex-wrap gap-4 mt-2 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  <span>{experience.location}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Briefcase className="h-4 w-4" />
-                  <span>{experience.type}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>
-                    {formatDate(experience.startDate)} -{" "}
-                    {experience.current ? "Present" : formatDate(experience.endDate!)}
-                  </span>
-                  <span className="text-primary ml-1">
-                    ({calculateDuration(experience.startDate, experience.endDate)})
-                  </span>
-                </div>
+            
+            <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-sm font-medium text-muted-foreground">
+              <span className="text-foreground text-base">{experience.company}</span>
+              <span className="hidden sm:inline-block h-4 w-px bg-border/50" />
+              
+              <div className="flex items-center gap-1.5">
+                <Briefcase className="h-3.5 w-3.5" />
+                {experience.type}
+              </div>
+              <span className="hidden sm:inline-block h-4 w-px bg-border/50" />
+              
+              <div className="flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5" />
+                {experience.location}
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Description */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2">About the Role</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              {experience.description}
-            </p>
-          </div>
-
-          {/* Responsibilities */}
-          {experience.responsibilities.length > 0 && (
-            <div>
-              <h3 className="text-lg font-semibold mb-3">Key Responsibilities</h3>
-              <ul className="space-y-3">
-                {experience.responsibilities.map((resp, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span className="text-primary mt-1 flex-shrink-0">▸</span>
-                    <span className="text-muted-foreground flex-1">{resp}</span>
-                  </li>
-                ))}
-              </ul>
+        {/* Scrollable Content */}
+        <div className="p-6 md:p-8 max-h-[60vh] overflow-y-auto space-y-8">
+          
+          {/* Timeframe & Status */}
+          <div className="flex items-center justify-between p-4 rounded-lg border border-border/50 bg-background">
+            <div className="flex items-center gap-2 text-sm font-mono text-muted-foreground">
+              <Calendar className="h-4 w-4" />
+              <span>{formatDate(experience.startDate)}</span>
+              <ArrowRight className="h-3 w-3 mx-1 opacity-50" />
+              <span className={experience.current ? "text-green-500 font-semibold" : ""}>
+                {experience.current ? "Present" : formatDate(experience.endDate!)}
+              </span>
             </div>
-          )}
-
-          {/* Technologies */}
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Technologies & Skills</h3>
-            <div className="flex flex-wrap gap-2">
-              {experience.technologies.map((tech) => (
-                <Badge
-                  key={tech}
-                  variant="secondary"
-                  className={getTechColor(tech)}
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </div>
+            <Badge variant="secondary" className="font-mono text-xs bg-secondary/50">
+              {calculateDuration(experience.startDate, experience.endDate)}
+            </Badge>
           </div>
 
           {/* Achievement Badge */}
           {experience.featured && (
-            <div className="p-4 rounded-lg bg-primary/10 border border-primary/20">
-              <div className="flex items-center gap-2 text-primary">
-                <span className="text-2xl">⭐</span>
-                <span className="font-semibold">Featured Experience</span>
+            <div className="flex items-start gap-3 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+              <Star className="h-5 w-5 mt-0.5 fill-current" />
+              <div>
+                <p className="font-semibold text-sm">Featured Experience</p>
+                <p className="text-sm opacity-90 mt-1">This role represents a significant milestone in my professional journey.</p>
               </div>
-              <p className="text-sm text-muted-foreground mt-1">
-                This role represents a significant milestone in my professional journey.
-              </p>
             </div>
           )}
+
+          {/* Details */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-sm font-semibold tracking-wide text-foreground uppercase mb-3">About the Role</h4>
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                {experience.description}
+              </p>
+            </div>
+
+            {experience.responsibilities.length > 0 && (
+              <div>
+                <h4 className="text-sm font-semibold tracking-wide text-foreground uppercase mb-3">Key Responsibilities</h4>
+                <ul className="space-y-3">
+                  {experience.responsibilities.map((resp, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-muted-foreground group">
+                      <div className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-foreground transition-colors mt-2 flex-shrink-0" />
+                      <span className="leading-relaxed">{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div>
+              <h4 className="text-sm font-semibold tracking-wide text-foreground uppercase mb-3">Technologies</h4>
+              <div className="flex flex-wrap gap-2">
+                {experience.technologies.map((tech) => (
+                  <Badge key={tech} variant="outline" className={cn("bg-background", getTechColor(tech))}>
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </DialogContent>
     </Dialog>

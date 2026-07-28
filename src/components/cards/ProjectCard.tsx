@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, FileText, Database } from "lucide-react";
+import { ExternalLink, Github, FileText } from "lucide-react";
 import Image from "next/image";
 import { Project } from "@/types";
 import { cardHover } from "@/lib/animations";
@@ -24,101 +24,86 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       className="h-full"
     >
       <Card
-        className="h-full overflow-hidden cursor-pointer group border-border/50 hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur-sm"
+        className="h-full flex flex-col justify-between overflow-hidden cursor-pointer group border-border/50 hover:border-foreground/30 transition-all duration-300 bg-background shadow-sm"
         onClick={onClick}
       >
-        {/* Image */}
-        <div className="relative w-full aspect-video overflow-hidden bg-muted">
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
-              <span className="text-4xl">💻</span>
-            </div>
-          )}
-          {/* Featured badge */}
-          {project.featured && (
-            <div className="absolute top-3 right-3">
-              <Badge className="bg-primary text-primary-foreground">
-                Featured
-              </Badge>
-            </div>
-          )}
-        </div>
-
-        {/* Content */}
-        <div className="p-6 space-y-4">
-          {/* Category */}
-          <Badge variant="outline" className="text-xs">
-            {project.category}
-          </Badge>
-
-          {/* Title */}
-          <h3 className="text-xl font-bold group-hover:text-primary transition-colors line-clamp-2">
-            {project.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-muted-foreground text-sm line-clamp-3">
-            {project.shortDescription}
-          </p>
-
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.slice(0, 4).map((tech) => (
-              <Badge
-                key={tech}
-                variant="secondary"
-                className={`text-xs ${getTechColor(tech)}`}
-              >
-                {tech}
-              </Badge>
-            ))}
-            {project.technologies.length > 4 && (
-              <Badge variant="secondary" className="text-xs">
-                +{project.technologies.length - 4} more
-              </Badge>
+        <div>
+          {/* Image */}
+          <div className="relative w-full aspect-video overflow-hidden bg-muted border-b border-border/40">
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-secondary/30">
+                <span className="text-2xl font-mono text-muted-foreground">{"</>"}</span>
+              </div>
+            )}
+            {/* Featured badge */}
+            {project.featured && (
+              <div className="absolute top-3 right-3">
+                <Badge className="bg-foreground text-background font-medium rounded-sm text-xs">
+                  Featured
+                </Badge>
+              </div>
             )}
           </div>
 
-          {/* Metrics (if available) */}
-          {project.metrics && (
-            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border/50">
-              {Object.entries(project.metrics)
-                .slice(0, 3)
-                .map(([key, value]) => (
-                  <div key={key} className="text-center">
-                    <p className="text-xs text-muted-foreground uppercase">
-                      {key}
-                    </p>
-                    <p className="text-sm font-semibold text-primary">
-                      {typeof value === "number" ? value.toFixed(2) : value}
-                    </p>
-                  </div>
-                ))}
+          {/* Content */}
+          <div className="p-6 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                {project.category}
+              </span>
             </div>
-          )}
 
-          {/* Links */}
-          <div className="flex gap-2 pt-2">
+            <h3 className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors line-clamp-1">
+              {project.title}
+            </h3>
+
+            <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
+              {project.shortDescription}
+            </p>
+
+            {/* Technologies */}
+            <div className="flex flex-wrap gap-1.5 pt-2">
+              {project.technologies.slice(0, 3).map((tech) => (
+                <Badge
+                  key={tech}
+                  variant="secondary"
+                  className={`text-xs rounded-sm bg-secondary/30 ${getTechColor(tech)}`}
+                >
+                  {tech}
+                </Badge>
+              ))}
+              {project.technologies.length > 3 && (
+                <Badge variant="secondary" className="text-xs rounded-sm bg-secondary/30 text-muted-foreground">
+                  +{project.technologies.length - 3}
+                </Badge>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Links */}
+        <div className="px-6 pb-6 pt-0">
+          <div className="flex gap-2 pt-4 border-t border-border/40">
             {project.github && (
               <Button
                 size="sm"
                 variant="outline"
-                className="flex-1"
+                className="flex-1 text-xs h-8 bg-transparent"
                 onClick={(e) => {
                   e.stopPropagation();
-                  if (project.github) {  // ← Tambah check lagi
+                  if (project.github) {
                     window.open(project.github, "_blank");
                   }
                 }}
               >
-                <Github className="h-4 w-4 mr-2" />
+                <Github className="h-3.5 w-3.5 mr-1.5 opacity-70" />
                 Code
               </Button>
             )}
@@ -126,15 +111,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               <Button
                 size="sm"
                 variant="outline"
-                className="flex-1"
+                className="flex-1 text-xs h-8 bg-transparent"
                 onClick={(e) => {
                   e.stopPropagation();
-                  if (project.demo) {  // ← Tambah check lagi
+                  if (project.demo) {
                     window.open(project.demo, "_blank");
                   }
                 }}
               >
-                <ExternalLink className="h-4 w-4 mr-2" />
+                <ExternalLink className="h-3.5 w-3.5 mr-1.5 opacity-70" />
                 Demo
               </Button>
             )}
@@ -142,15 +127,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               <Button
                 size="sm"
                 variant="outline"
-                className="flex-1"
+                className="flex-1 text-xs h-8 bg-transparent"
                 onClick={(e) => {
                   e.stopPropagation();
-                  if (project.paper) {  // ← Tambah check lagi
+                  if (project.paper) {
                     window.open(project.paper, "_blank");
                   }
                 }}
               >
-                <FileText className="h-4 w-4 mr-2" />
+                <FileText className="h-3.5 w-3.5 mr-1.5 opacity-70" />
                 Paper
               </Button>
             )}

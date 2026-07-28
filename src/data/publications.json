@@ -25,24 +25,24 @@
   },
   {
     "id": "pub-2",
-    "title": "Peningkatan Robustness Model End-to-End Steganografi Gambar AttenHideNet terhadap Beragam Distorsi melalui Adversarial Training",
+    "title": "Peningkatan Robustness Model End-to-End Steganografi Gambar AttenHideNet terhadap Beragam Distorsi melalui Distortion-Aware Training",
     "authors": [
       "Adidya Abimanyu",
       "Bambang Harjito",
       "Shaifudin Zuhdi"
     ],
-    "venue": "Sebelas Maret University Conference on Computer Science (In Preparation)",
+    "venue": "Sebelas Maret University Conference on Computer Science",
     "year": 2025,
-    "status": "In Preparation",
+    "status": "Accepted",
     "doi": null,
     "pdf": null,
     "arxiv": null,
-    "abstract": "We propose an enhanced deep steganography framework based on AttenHideNet architecture with adversarial training to improve robustness against many types of attacks.",
+    "abstract": "We propose an enhanced deep steganography framework based on AttenHideNet architecture with distortion-aware training to improve robustness against many types of attacks.",
     "tags": [
       "Deep Learning",
       "Steganography",
       "Security",
-      "Adversarial Training"
+      "Distortion-Aware Training"
     ],
     "citations": 0,
     "order": 2
