@@ -89,5 +89,52 @@
     ],
     "featured": true,
     "order": 3
+  },
+  {
+    "id": "exp-4",
+    "title": "Machine Learning Cohort",
+    "company": "Bangkit Academy",
+    "location": "Indonesia",
+    "type": "Nonformal Education",
+    "startDate": "2024-08",
+    "endDate": "2024-12",
+    "current": false,
+    "description": "Participated in an intensive machine learning program, learning data analysis and Python via Coursera and Dicoding, culminating in a drowsiness detection mobile app capstone project.",
+    "responsibilities": [
+      "Learned about Machine Learning and Data Analyst using Python programming language through Coursera and Dicoding platforms.",
+      "Developed a Capstone Project featuring a mobile application that can detect drowsiness.",
+      "Implemented a sleep quality assessment form within the app scaled from 1-10.",
+      "Earned 20 university credit conversions upon successful completion of the program."
+    ],
+    "technologies": [
+      "Python",
+      "Machine Learning",
+      "TensorFlow",
+      "Keras"
+    ],
+    "featured": true,
+    "order": 4
+  },
+  {
+    "id": "exp-5",
+    "title": "Event Staff",
+    "company": "Fakultas Teknologi Informasi dan Sains data",
+    "location": "Indonesia",
+    "type": "Organization",
+    "startDate": "2023-06",
+    "endDate": "2023-08",
+    "current": false,
+    "description": "Served as Event Staff responsible for crowd control, event flow management, and speaker coordination for new student events.",
+    "responsibilities": [
+      "Arranged the flow scheme for new students to enter and exit the event.",
+      "Ensured the entering and exiting processes were always orderly and neat.",
+      "Determined and formulated questions for the resource persons who came as speakers at the event."
+    ],
+    "technologies": [
+      "Draw.io",
+      "Microsoft Word"
+    ],
+    "featured": false,
+    "order": 5
   }
 ]

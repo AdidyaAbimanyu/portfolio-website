@@ -17,6 +17,15 @@ export default function ExperienceCard({
   experience,
   onClick,
 }: ExperienceCardProps) {
+  const companyInitials = experience.company
+    ? experience.company
+        .split(" ")
+        .map((word) => word[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase()
+    : "EX";
+
   return (
     <motion.div variants={fadeInUp}>
       <Card
@@ -27,11 +36,7 @@ export default function ExperienceCard({
           {/* Left side */}
           <div className="flex-shrink-0">
             <div className="w-14 h-14 rounded-md border border-border/50 bg-secondary/20 flex items-center justify-center text-sm font-mono font-bold text-foreground">
-              {experience.company
-                .split(" ")
-                .map((word) => word[0])
-                .join("")
-                .slice(0, 2)}
+              {companyInitials}
             </div>
           </div>
 
@@ -46,7 +51,9 @@ export default function ExperienceCard({
                 </h3>
                 <div className="flex items-center gap-2 text-muted-foreground mt-1 text-sm">
                   <Building2 className="h-4 w-4" />
-                  <span className="font-medium text-foreground">{experience.company}</span>
+                  <span className="font-medium text-foreground">
+                    {experience.company || "Unknown Organization"}
+                  </span>
                 </div>
               </div>
               <Badge variant="secondary" className="font-mono text-xs w-fit">
@@ -58,26 +65,33 @@ export default function ExperienceCard({
             <div className="flex flex-wrap gap-4 text-xs font-mono text-muted-foreground">
               <div className="flex items-center gap-1.5">
                 <MapPin className="h-3.5 w-3.5" />
-                <span>{experience.location}</span>
+                <span>{experience.location || "Indonesia"}</span>
               </div>
               <span className="text-border">•</span>
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" />
                 <span>
-                  {formatDate(experience.startDate)} —{" "}
-                  {experience.current ? "Present" : formatDate(experience.endDate!)}
+                  {experience.startDate ? formatDate(experience.startDate) : "TBA"} —{" "}
+                  {experience.current 
+                    ? "Present" 
+                    : (experience.endDate ? formatDate(experience.endDate) : "Completed")}
                 </span>
-                <span className="text-foreground ml-1">
-                  ({calculateDuration(experience.startDate, experience.endDate)})
-                </span>
+                
+                {experience.startDate && (
+                  <span className="text-foreground ml-1">
+                    ({calculateDuration(experience.startDate, experience.endDate)})
+                  </span>
+                )}
               </div>
             </div>
 
             {/* Description */}
-            <p className="text-muted-foreground text-sm leading-relaxed">{experience.description}</p>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              {experience.description}
+            </p>
 
             {/* Key responsibilities */}
-            {experience.responsibilities.length > 0 && (
+            {experience.responsibilities && experience.responsibilities.length > 0 && (
               <ul className="space-y-2 pt-1">
                 {experience.responsibilities.slice(0, 3).map((resp, idx) => (
                   <li
@@ -97,17 +111,19 @@ export default function ExperienceCard({
             )}
 
             {/* Technologies */}
-            <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border/40">
-              {experience.technologies.map((tech) => (
-                <Badge
-                  key={tech}
-                  variant="outline"
-                  className={`text-xs rounded-sm bg-secondary/20 border-border/50 ${getTechColor(tech)}`}
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </div>
+            {experience.technologies && experience.technologies.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border/40">
+                {experience.technologies.map((tech) => (
+                  <Badge
+                    key={tech}
+                    variant="outline"
+                    className={`text-xs rounded-sm bg-secondary/20 border-border/50 ${getTechColor(tech)}`}
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </Card>

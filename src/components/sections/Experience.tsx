@@ -28,7 +28,7 @@ export default function ExperiencePage() {
             </div>
             
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-              Work Experience.
+              Experience.
             </h1>
             
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
