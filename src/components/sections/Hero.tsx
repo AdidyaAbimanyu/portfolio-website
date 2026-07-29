@@ -46,7 +46,7 @@ export default function Hero() {
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
               Specializing in <strong className="text-foreground font-semibold">Web Development, </strong>
               <strong className="text-foreground font-semibold">Machine Learning, and </strong>
-              <strong className="text-foreground font-semibold">Deep Learning.</strong>
+              <strong className="text-foreground font-semibold">Deep Learning. </strong>
               Passionate about solving real-world problems through intelligent automation.
             </p>
 
