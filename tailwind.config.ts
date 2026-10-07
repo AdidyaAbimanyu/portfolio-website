@@ -15,9 +15,16 @@ const config: Config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        paper: "hsl(var(--paper))",
+        "paper-deep": "hsl(var(--paper-deep))",
+        ink: "hsl(var(--ink))",
+        "ink-soft": "hsl(var(--ink-soft))",
+        rule: "hsl(var(--rule))",
+        signal: "hsl(var(--signal))",
+        "signal-soft": "hsl(var(--signal-soft))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "hsl(var(--signal))",
+          foreground: "hsl(var(--signal-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -44,24 +51,24 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        display: ["var(--font-display)", "Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "fade-in": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
+        "rise-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "gradient-shift": {
-          "0%, 100%": { backgroundPosition: "0% center" },
-          "50%": { backgroundPosition: "100% center" },
         },
       },
       animation: {
-        "fade-in": "fade-in 0.6s ease-out",
-        "gradient-shift": "gradient-shift 3s ease infinite",
+        "rise-in": "rise-in 0.18s ease-out both",
       },
     },
   },
@@ -69,3 +76,4 @@ const config: Config = {
 };
 
 export default config;
+

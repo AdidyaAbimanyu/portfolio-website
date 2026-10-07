@@ -131,25 +131,7 @@ export function lerp(start: number, end: number, factor: number): number {
   return start + (end - start) * factor;
 }
 
-// Get color from tech stack (untuk badges)
-export function getTechColor(tech: string): string {
-  const colors: Record<string, string> = {
-    Python: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    JavaScript: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
-    TypeScript: "bg-blue-400/10 text-blue-400 border-blue-400/20",
-    React: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
-    "Next.js": "bg-gray-500/10 text-gray-500 border-gray-500/20",
-    TensorFlow: "bg-orange-500/10 text-orange-500 border-orange-500/20",
-    PyTorch: "bg-red-500/10 text-red-500 border-red-500/20",
-    OpenCV: "bg-green-500/10 text-green-500 border-green-500/20",
-    "Node.js": "bg-green-600/10 text-green-600 border-green-600/20",
-    Tailwind: "bg-teal-500/10 text-teal-500 border-teal-500/20",
-  };
-
-  return (
-    colors[tech] || "bg-primary/10 text-primary border-primary/20"
-  );
-}
+// Shared class helper only — tech names render as plain mono text, never colored badges.
 
 // Copy to clipboard
 export async function copyToClipboard(text: string): Promise<boolean> {

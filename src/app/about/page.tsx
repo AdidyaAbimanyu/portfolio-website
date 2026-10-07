@@ -1,263 +1,80 @@
 "use client";
 
 import FadeIn from "@/components/animations/FadeIn";
-import StaggerChildren from "@/components/animations/StaggerChildren";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  GraduationCap,
-  Award,
-  Code2,
-  BookOpen,
-  Download,
-  Mail,
-  ArrowUpRight,
-} from "lucide-react";
-import personalData from "../../data/personal.json";
-import publicationsData from "../../data/publications.json";
-import certificationsData from "../../data/certifications.json";
-import { PersonalInfo, Publication, Certification } from "@/types";
-import { motion } from "framer-motion";
-import { fadeInUp } from "@/lib/animations";
+import certificationsData from "@/data/certifications.json";
+import personalData from "@/data/personal.json";
+import publicationsData from "@/data/publications.json";
+import type { Certification, PersonalInfo, Publication } from "@/types";
 import Image from "next/image";
 
 export default function AboutPage() {
   const personal = personalData as PersonalInfo;
   const publications = publicationsData as Publication[];
-  const certifications = certificationsData as Certification[];
+  const certifications = [...(certificationsData as Certification[])].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   return (
-    <div className="min-h-screen pt-28 pb-24 px-6 md:px-12 lg:px-24">
-      <div className="container mx-auto max-w-5xl">
-        
-        {/* Header */}
-        <FadeIn>
-          <div className="flex flex-col items-start mb-16 space-y-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-              About Me.
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Passionate about building software systems, conducting AI research, and solving real-world problems through intelligent automation.
-            </p>
-          </div>
-        </FadeIn>
+    <div className="shell pb-20 pt-28 md:pt-36">
+      <FadeIn initiallyVisible>
+        <p className="folio"><span className="text-signal">03</span><span aria-hidden="true" className="mx-3 text-rule">/</span>About</p>
+        <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-[1.03] tracking-tight text-foreground sm:text-5xl md:text-6xl">Research-minded student who ships.</h1>
+      </FadeIn>
 
-        {/* Bio Section */}
-        <FadeIn delay={0.1}>
-          <div className="rounded-2xl overflow-hidden border border-border/50 bg-background shadow-sm p-8 md:p-12 mb-16">
-            <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
-              
-              {/* Avatar */}
-              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-xl overflow-hidden bg-muted border border-border/50 shrink-0">
-                {personal.avatar ? (
-                  <Image
-                    src={personal.avatar}
-                    alt={personal.name}
-                    fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                    priority
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center font-mono font-bold text-3xl text-muted-foreground">
-                    AA
-                  </div>
-                )}
+      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-12">
+        <div className="md:col-span-4">
+          <FadeIn initiallyVisible delay={0.05}>
+            <div className="md:sticky md:top-24">
+              <div className="relative aspect-[4/5] w-full max-w-[280px] overflow-hidden border border-border bg-muted">
+                <Image src={personal.avatar || "/images/avatar.jpg"} alt={`Portrait of ${personal.name}`} fill className="object-cover" sizes="(max-width: 768px) 70vw, 280px" />
               </div>
-
-              {/* Bio Content */}
-              <div className="flex-1 space-y-6">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-1">
-                    {personal.name}
-                  </h2>
-                  <p className="text-sm font-mono text-muted-foreground">{personal.title}</p>
-                </div>
-
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  {personal.bio}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {personal.interests?.map((interest) => (
-                    <Badge key={interest} variant="secondary" className="rounded-sm bg-secondary/30 text-xs font-mono">
-                      {interest}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border/40">
-                  <Button asChild className="h-10 px-5 font-medium">
-                    <a href={`mailto:${personal.email}`}>
-                      <Mail className="h-4 w-4 mr-2" />
-                      Contact Me
-                    </a>
-                  </Button>
-                  <Button variant="outline" asChild className="h-10 px-5 font-medium bg-background">
-                    <a href={personal.resume} download>
-                      <Download className="h-4 w-4 mr-2" />
-                      Resume
-                    </a>
-                  </Button>
-                </div>
-              </div>
-
+              <p className="mt-4 font-display text-xl font-bold tracking-tight text-foreground">{personal.name}</p>
+              <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.14em] text-muted-foreground">{personal.title} — {personal.location}</p>
+              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">{personal.bio}</p>
+              <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.12em] text-muted-foreground">{(personal.interests ?? []).join(" / ")}</p>
             </div>
-          </div>
-        </FadeIn>
+          </FadeIn>
+        </div>
 
-        {/* Stats */}
-        <FadeIn delay={0.2}>
-          <div className="rounded-2xl overflow-hidden border border-border/50 shadow-sm bg-border/40 mb-20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px">
-              
-              <div className="bg-background p-6 md:p-8 flex flex-col justify-center">
-                <Code2 className="h-5 w-5 text-muted-foreground mb-3" />
-                <p className="text-3xl md:text-4xl font-bold font-mono tracking-tighter text-foreground mb-1">2+</p>
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Years Coding</p>
-              </div>
-
-              <div className="bg-background p-6 md:p-8 flex flex-col justify-center">
-                <BookOpen className="h-5 w-5 text-muted-foreground mb-3" />
-                <p className="text-3xl md:text-4xl font-bold font-mono tracking-tighter text-foreground mb-1">{publications.length}</p>
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Publications</p>
-              </div>
-
-              <div className="bg-background p-6 md:p-8 flex flex-col justify-center">
-                <Award className="h-5 w-5 text-muted-foreground mb-3" />
-                <p className="text-3xl md:text-4xl font-bold font-mono tracking-tighter text-foreground mb-1">{certifications.length}</p>
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Certifications</p>
-              </div>
-
-              <div className="bg-background p-6 md:p-8 flex flex-col justify-center">
-                <GraduationCap className="h-5 w-5 text-muted-foreground mb-3" />
-                <p className="text-3xl md:text-4xl font-bold font-mono tracking-tighter text-foreground mb-1">3.5+</p>
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">GPA</p>
-              </div>
-
+        <div className="md:col-span-8">
+          <FadeIn initiallyVisible delay={0.08}>
+            <div className="space-y-5 border-t rule pt-6 text-[16px] leading-relaxed text-muted-foreground">
+              <p><span className="text-foreground">I study Informatics at Universitas Sebelas Maret.</span> My coursework centers on digital image processing, web programming, database systems and software engineering.</p>
+              <p>I learned to build in teams: a four-person Laravel marketplace, an LMS and KMS for PT KAI, and a news CMS for Winnicode. Bangkit then pushed me into machine learning full time, ending in the SleepWell capstone.</p>
+              <p>Now I split time between web platforms and applied deep learning — image enhancement research, steganography robustness, and retrieval chat over my own documents.</p>
             </div>
-          </div>
-        </FadeIn>
+          </FadeIn>
 
-        {/* Publications Section */}
-        <FadeIn delay={0.3}>
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-8 pb-3 border-b border-border/40">
-              <BookOpen className="h-5 w-5 text-muted-foreground" />
-              <h2 className="text-2xl font-bold tracking-tight text-foreground">Publications</h2>
-            </div>
-
-            <StaggerChildren className="space-y-4">
+          <div className="mt-12">
+            <p className="folio mb-4">Research</p>
+            <div className="border-t rule">
               {publications.map((pub) => (
-                <motion.div key={pub.id} variants={fadeInUp}>
-                  <Card className="p-6 md:p-8 border-border/50 hover:border-foreground/30 transition-all bg-background shadow-sm">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                      <div className="space-y-3 flex-1">
-                        <h3 className="text-lg font-bold tracking-tight text-foreground">
-                          {pub.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground font-mono">
-                          {pub.authors.join(", ")}
-                        </p>
-                        <p className="text-sm text-muted-foreground">
-                          <span className="text-foreground font-medium">{pub.venue}</span> — {pub.year}
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-2 pt-1">
-                          <Badge
-                            variant={pub.status === "Published" ? "default" : "secondary"}
-                            className="rounded-sm text-xs font-mono"
-                          >
-                            {pub.status}
-                          </Badge>
-                          {pub.tags.slice(0, 3).map((tag) => (
-                            <Badge key={tag} variant="outline" className="rounded-sm text-xs font-mono bg-secondary/20">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      {pub.pdf && (
-                        <Button variant="outline" size="sm" asChild className="shrink-0 h-9 font-medium">
-                          <a href={pub.pdf} target="_blank" rel="noopener noreferrer">
-                            View PDF <ArrowUpRight className="ml-1.5 h-3.5 w-3.5 opacity-70" />
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </Card>
-                </motion.div>
+                <div key={pub.id} className="border-b rule py-6">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-signal">{pub.status} — {pub.year}</p>
+                  <h2 className="mt-2 font-display text-xl font-bold leading-snug tracking-tight text-foreground">{pub.title}</h2>
+                  <p className="mt-2 text-sm text-muted-foreground">{pub.authors.join(", ")} · {pub.venue}</p>
+                  <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                    {pub.pdf ? <a href={pub.pdf} target="_blank" rel="noopener noreferrer" className="field-link text-foreground">PDF ↗</a> : null}
+                    {pub.arxiv && !pub.arxiv.includes("XXXX") ? <a href={pub.arxiv} target="_blank" rel="noopener noreferrer" className="field-link text-foreground">arXiv ↗</a> : null}
+                  </div>
+                </div>
               ))}
-            </StaggerChildren>
-          </div>
-        </FadeIn>
-
-        {/* Certifications Section */}
-        <FadeIn delay={0.4}>
-          <div className="w-full overflow-hidden"> {/* Tambahan pengaman wrapper */}
-            <div className="flex items-center gap-3 mb-8 pb-3 border-b border-border/40">
-              <Award className="h-5 w-5 text-muted-foreground" />
-              <h2 className="text-2xl font-bold tracking-tight text-foreground">Certifications</h2>
             </div>
-
-            {/* PERBAIKAN: Tambahkan grid-cols-1 dan w-full di sini */}
-            <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-              {certifications.map((cert) => (
-                <motion.div key={cert.id} variants={fadeInUp} className="h-full min-w-0">
-                  <Card className="p-6 md:p-8 h-full flex flex-col justify-between border-border/50 hover:border-foreground/30 transition-all bg-background shadow-sm overflow-hidden">
-                    
-                    <div className="space-y-4">
-                      <div className="min-w-0"> {/* Pengaman untuk teks panjang */}
-                        <h3 className="text-lg font-bold tracking-tight text-foreground mb-1 break-words">
-                          {cert.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground font-medium truncate">
-                          {cert.issuer}
-                        </p>
-                      </div>
-
-                      <p className="text-xs font-mono text-muted-foreground">
-                        Issued: {cert.date}
-                        {cert.expiryDate && ` • Expires: ${cert.expiryDate}`}
-                      </p>
-
-                      {cert.skills && cert.skills.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 pt-1">
-                          {cert.skills.map((skill) => (
-                            <Badge key={skill} variant="secondary" className="text-xs font-mono rounded-sm bg-secondary/30">
-                              {skill}
-                            </Badge>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {cert.credentialUrl && (
-                      <div className="pt-6 mt-6 border-t border-border/40">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full font-medium h-9"
-                          asChild
-                        >
-                          <a
-                            href={cert.credentialUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Verify Credential <ArrowUpRight className="ml-1.5 h-3.5 w-3.5 opacity-70 shrink-0" />
-                          </a>
-                        </Button>
-                      </div>
-                    )}
-                  </Card>
-                </motion.div>
-              ))}
-            </StaggerChildren>
           </div>
-        </FadeIn>
 
+          <div className="mt-12">
+            <p className="folio mb-4">Certifications — verifiable</p>
+            <div className="border-t rule">
+              {certifications.map((cert) => (
+                <div key={cert.id} className="grid grid-cols-1 gap-1 border-b rule py-5 sm:grid-cols-12 sm:gap-4">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted-foreground sm:col-span-3">{cert.date}</p>
+                  <div className="sm:col-span-9">
+                    <p className="font-display text-[17px] font-bold tracking-tight text-foreground">{cert.name}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{cert.issuer}{cert.credentialUrl ? <> — <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="field-link text-foreground">Verify ↗</a></> : null}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

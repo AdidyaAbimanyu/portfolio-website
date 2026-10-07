@@ -1,147 +1,83 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import FadeIn from "@/components/animations/FadeIn";
-import StaggerChildren from "@/components/animations/StaggerChildren";
-import ProjectCard from "@/components/cards/ProjectCard";
-import ProjectModal from "@/components/modals/ProjectModal";
-import { Button } from "@/components/ui/button";
-import { FolderGit2, ArrowRight } from "lucide-react";
-import projectsData from "../../data/projects.json";
-import { Project } from "@/types";
-import { motion, AnimatePresence } from "framer-motion";
-import { fadeInUp } from "@/lib/animations";
+import type { Project } from "@/types";
+import { cn } from "@/lib/utils";
+
+function outcomeFor(project: Project): string {
+  if (project.id === "proj-1")
+    return "CNN drowsiness detection at 90%+ accuracy, shipped inside an Android app.";
+  if (project.id === "proj-5")
+    return "Chat with PDF, DOCX and TXT using Llama 3.3 70B with cited answers.";
+  return project.shortDescription;
+}
+
+export function CaseStudy({ project, index, priority }: { project: Project; index: string; priority?: boolean }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <FadeIn>
+      <article className="grid grid-cols-1 gap-6 border-b rule py-10 md:grid-cols-12 md:gap-8 md:py-14">
+        <div className="md:col-span-7">
+          {project.image ? (
+            <div className="relative aspect-[4/3] w-full overflow-hidden border border-border bg-muted">
+              <Image src={project.image} alt={`${project.title} interface`} fill className="object-cover" priority={priority} sizes="(max-width: 768px) 100vw, 60vw" />
+            </div>
+          ) : (
+            <div className="flex aspect-[4/3] w-full items-center justify-center border border-border bg-muted font-mono text-[12px] uppercase tracking-[0.16em] text-muted-foreground">No image</div>
+          )}
+          <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Fig. {index} — {project.category}, {project.startDate.slice(0, 4)}</p>
+        </div>
+        <div className="md:col-span-5">
+          <p className="folio"><span className="text-signal">{index}</span><span aria-hidden="true" className="mx-2 text-rule">/</span>{project.category} — {project.startDate} to {project.endDate}</p>
+          <h3 className="mt-4 font-display text-2xl font-bold leading-tight tracking-tight text-foreground md:text-[34px]">{project.title}</h3>
+          <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.12em] text-muted-foreground">{project.technologies.slice(0, 6).join(" / ")}</p>
+          <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">{outcomeFor(project)}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            {project.github ? <a href={project.github} target="_blank" rel="noopener noreferrer" className="field-link text-foreground">Source ↗</a> : null}
+            {project.demo ? <a href={project.demo} target="_blank" rel="noopener noreferrer" className="field-link text-foreground">Live ↗</a> : null}
+            {project.paper ? <a href={project.paper} target="_blank" rel="noopener noreferrer" className="field-link text-foreground">Paper ↗</a> : null}
+            <button onClick={() => setOpen((v) => !v)} aria-expanded={open} className="font-mono text-[12px] uppercase tracking-[0.14em] text-signal transition-opacity hover:opacity-80">{open ? "Close details −" : "Read details +"}</button>
+          </div>
+          <div className={cn("grid transition-all duration-200", open ? "mt-6 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0")}>
+            <div className="overflow-hidden">
+              <div className="space-y-5 border-t rule pt-5 text-[15px] leading-relaxed text-muted-foreground">
+                <p>{project.fullDescription}</p>
+                {project.highlights && project.highlights.length > 0 ? (
+                  <ul className="space-y-2">
+                    {project.highlights.map((h) => (
+                      <li key={h} className="flex gap-3"><span aria-hidden="true" className="text-signal">→</span><span>{h}</span></li>
+                    ))}
+                  </ul>
+                ) : null}
+                <p className="font-mono text-[12px] uppercase tracking-[0.12em]">{project.tags.join(" / ")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </FadeIn>
+  );
+}
+
 import Link from "next/link";
 
-export default function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const projects = projectsData as Project[];
-
-  // Get unique categories
-  const categories = ["All", ...new Set(projects.map((p) => p.category))];
-
-  // Filter projects by category
-  const filteredProjects =
-    selectedCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === selectedCategory);
-
-  // Sort by order and featured first
-  const sortedProjects = [...filteredProjects].sort((a, b) => {
-    if (a.featured && !b.featured) return -1;
-    if (!a.featured && b.featured) return 1;
-    return a.order - b.order;
-  });
-
+export default function Projects({ projects, limit, showLink }: { projects: Project[]; limit?: number; showLink?: boolean }) {
+  const visible = limit ? projects.slice(0, limit) : projects;
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 lg:px-24 border-t border-border/20">
-      <div className="container mx-auto max-w-7xl">
-        
-        {/* Header Section */}
-        <FadeIn>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-            <div className="flex flex-col items-start space-y-4 max-w-2xl">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary/30 border border-border/50 text-sm font-medium transition-colors hover:bg-secondary/50">
-                <FolderGit2 className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">Portfolio</span>
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-                Selected Works.
-              </h2>
-              
-              <p className="text-lg text-muted-foreground">
-                Explore my research and development projects in AI, Machine Learning, and Computer Vision.
-              </p>
-            </div>
-
-            {/* View All Button */}
-            <Link href="/projects" className="hidden md:block">
-              <Button variant="ghost" className="group font-medium hover:bg-accent/50 text-muted-foreground hover:text-foreground">
-                View All Projects
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </div>
-        </FadeIn>
-
-        {/* Category Filter */}
-        <FadeIn delay={0.1}>
-          <div className="flex flex-wrap items-center gap-2 mb-10">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "secondary" : "ghost"}
-                size="sm"
-                onClick={() => setSelectedCategory(category)}
-                className={`transition-all rounded-full px-4 ${
-                  selectedCategory === category 
-                    ? "bg-foreground text-background hover:bg-foreground/90 font-medium" 
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50 border border-transparent hover:border-border/50"
-                }`}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-        </FadeIn>
-
-        {/* Projects Grid */}
-        <StaggerChildren>
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <AnimatePresence mode="popLayout">
-              {sortedProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  variants={fadeInUp}
-                  initial="initial"
-                  animate="animate"
-                  exit="initial"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                >
-                  <ProjectCard
-                    project={project}
-                    onClick={() => setSelectedProject(project)}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        </StaggerChildren>
-
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <FadeIn>
-            <div className="flex flex-col items-center justify-center py-24 text-center bg-muted/20 rounded-2xl border border-dashed border-border/50 mt-8">
-              <FolderGit2 className="h-12 w-12 text-muted-foreground/50 mb-4" />
-              <p className="text-foreground font-medium text-lg">No projects found</p>
-              <p className="text-muted-foreground">Try selecting a different category.</p>
-            </div>
-          </FadeIn>
-        )}
-
-        {/* View All Button (Mobile Only) */}
-        <div className="mt-12 md:hidden">
-          <Link href="/projects" className="w-full">
-            <Button variant="outline" className="w-full">
-              View All Projects ({projects.length})
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
+    <div>
+      <div className="border-t rule">
+        {visible.map((project, i) => (
+          <CaseStudy key={project.id} project={project} index={String(i + 1).padStart(2, "0")} priority={i === 0} />
+        ))}
       </div>
-
-      {/* Project Detail Modal */}
-      <ProjectModal
-        project={selectedProject}
-        isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
-    </section>
+      {showLink ? (
+        <div className="flex flex-wrap items-center justify-between gap-3 py-8">
+          <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-muted-foreground">Showing {visible.length} of {projects.length} case studies</p>
+          <Link href="/projects" className="font-mono text-[12px] uppercase tracking-[0.14em] text-foreground transition-colors hover:text-signal">All projects →</Link>
+        </div>
+      ) : null}
+    </div>
   );
 }

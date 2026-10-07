@@ -1,122 +1,109 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const footerLinks = {
-  navigation: [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Experience", path: "/experience" },
-  ],
-  resources: [
-    { name: "Blog", path: "/blog" },
-    { name: "Resume", path: "/resume.pdf" },
-  ],
-};
+import personalData from "@/data/personal.json";
+import type { PersonalInfo } from "@/types";
 
 export default function Footer() {
+  const personal = personalData as PersonalInfo;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="border-t border-border/40 bg-background mt-20">
-      <div className="container mx-auto max-w-7xl px-6 md:px-12 lg:px-24 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
-          
-          {/* Brand section */}
-          <div className="md:col-span-2 flex flex-col items-start">
-            <h3 className="text-xl font-bold tracking-tight text-foreground mb-4">
-              Adidya Abimanyu.
-            </h3>
-            <p className="text-sm text-muted-foreground mb-6 max-w-sm leading-relaxed">
-              Informatics Student. Building clean, scalable solutions and solving real-world problems through intelligent automation.
+    <footer className="border-t rule bg-background">
+      <div className="shell py-12 md:py-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <p className="font-display text-xl font-bold tracking-tight text-foreground">
+              Adidya Abimanyu
+              <span aria-hidden="true" className="text-signal">
+                .
+              </span>
             </p>
-            
-            <div className="flex items-center gap-3">
-              <a href="https://github.com/adidyaabimanyu" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="icon" className="h-9 w-9 rounded-md bg-transparent border-border/50 hover:bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors">
-                  <Github className="h-4 w-4" />
-                  <span className="sr-only">GitHub</span>
-                </Button>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              Informatics student in Surakarta, Indonesia. I build web systems
+              and applied machine learning.
+            </p>
+            <p className="mt-5 font-mono text-[12px] text-muted-foreground">
+              <a
+                href={`mailto:${personal.email}`}
+                className="field-link text-foreground"
+              >
+                {personal.email}
               </a>
-              <a href="https://linkedin.com/in/adidyaabimanyu" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="icon" className="h-9 w-9 rounded-md bg-transparent border-border/50 hover:bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors">
-                  <Linkedin className="h-4 w-4" />
-                  <span className="sr-only">LinkedIn</span>
-                </Button>
-              </a>
-              <a href="mailto:adidyawork88@example.com">
-                <Button variant="outline" size="icon" className="h-9 w-9 rounded-md bg-transparent border-border/50 hover:bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors">
-                  <Mail className="h-4 w-4" />
-                  <span className="sr-only">Email</span>
-                </Button>
-              </a>
-            </div>
+            </p>
           </div>
 
-          {/* Navigation links */}
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm">Navigation</h4>
-            <ul className="space-y-3">
-              {footerLinks.navigation.map((link) => (
+          <nav aria-label="Footer" className="md:col-span-3">
+            <p className="folio mb-4">Index</p>
+            <ul className="space-y-2.5 text-sm">
+              {[
+                { name: "Projects", path: "/projects" },
+                { name: "Experience", path: "/experience" },
+                { name: "About", path: "/about" },
+                { name: "Notes", path: "/blog" },
+              ].map((link) => (
                 <li key={link.path}>
                   <Link
                     href={link.path}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center group"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm">Resources</h4>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    href={link.path}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center group"
-                    target={link.path.endsWith(".pdf") ? "_blank" : undefined}
-                  >
-                    {link.name}
-                    {link.path.endsWith(".pdf") && (
-                      <ArrowUpRight className="ml-1 h-3 w-3 opacity-50 group-hover:opacity-100 transition-opacity" />
-                    )}
-                  </Link>
-                </li>
-              ))}
+          <div className="md:col-span-3">
+            <p className="folio mb-4">Elsewhere</p>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href={personal.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  GitHub
+                  <span aria-hidden="true"> ↗</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personal.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  LinkedIn
+                  <span aria-hidden="true"> ↗</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personal.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Resume
+                  <span aria-hidden="true"> ↗</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom section */}
-        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-muted-foreground">
-          <div className="flex items-center gap-4">
-            <p>© {new Date().getFullYear()} Adidya Abimanyu.</p>
-            <span className="hidden md:inline-block h-3 w-px bg-border"></span>
-            <p className="hidden md:block">Surakarta, Indonesia</p>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-              </span>
-              All systems operational
-            </span>
-            <span className="hidden md:inline-block h-3 w-px bg-border"></span>
-            <button 
-              onClick={scrollToTop} 
-              className="hover:text-foreground transition-colors inline-flex items-center gap-1"
+        <div className="mt-12 flex flex-col gap-3 border-t rule pt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} Adidya Abimanyu — Surakarta, ID</p>
+          <div className="flex items-center gap-5">
+            <span>Set in Archivo, Inter + JetBrains Mono</span>
+            <button
+              onClick={scrollToTop}
+              className="uppercase tracking-[0.14em] transition-colors hover:text-foreground"
             >
               Back to top ↑
             </button>

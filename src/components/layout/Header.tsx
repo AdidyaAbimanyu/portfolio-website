@@ -2,32 +2,29 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, AnimatePresence } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import ThemeToggle from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 import NProgress from "nprogress";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
   { name: "Experience", path: "/experience" },
-  { name: "Blog", path: "/blog" },
+  { name: "About", path: "/about" },
+  { name: "Notes", path: "/blog" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 16);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -39,68 +36,83 @@ export default function Header() {
     NProgress.start();
   };
 
+  const scrolledHeaderClass = "border-b rule bg-background/90 backdrop-blur-sm";
+  const topHeaderClass = "border-b border-transparent bg-transparent";
+  const headerStateClass = isScrolled ? scrolledHeaderClass : topHeaderClass;
+
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
+        initial={{ y: -64 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
-          isScrolled
-            ? "border-b border-border/50 bg-background/70 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent"
+          "fixed inset-x-0 top-0 z-50 transition-colors duration-200",
+          headerStateClass
         )}
       >
-        <nav className="container mx-auto max-w-7xl px-6 md:px-12 lg:px-24 h-16 flex items-center justify-between">
-          
-          {/* Logo */}
-          <Link 
-            href="/" 
+        <nav
+          aria-label="Primary"
+          className="shell flex h-16 items-center justify-between"
+        >
+          <Link
+            href="/"
             onClick={handleLinkClick}
-            className="text-lg font-bold tracking-tighter text-foreground flex items-center gap-2 group"
+            className="font-display text-[17px] font-bold tracking-tight text-foreground"
           >
-            <span className="h-2 w-2 rounded-full bg-foreground group-hover:bg-green-500 transition-colors" />
-            Adidya.
+            Adidya Abimanyu
+            <span aria-hidden="true" className="text-signal">
+              .
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => {
-              const isActive = pathname === item.path;
+          <div className="hidden items-center gap-7 md:flex">
+            {navItems.map((item, i) => {
+              const isActive =
+                pathname === item.path ||
+                (item.path !== "/" && pathname.startsWith(item.path));
               return (
                 <Link
                   key={item.path}
                   href={item.path}
                   onClick={handleLinkClick}
+                  aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "relative px-3 py-1.5 text-sm font-medium transition-colors rounded-md",
+                    "group font-mono text-[12px] uppercase tracking-[0.14em] transition-colors",
                     isActive
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
+                  <span
+                    aria-hidden="true"
+                    className="mr-1.5 text-[10px] text-signal"
+                  >
+                    0{i + 1}
+                  </span>
                   {item.name}
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      className="absolute inset-0 bg-secondary/50 rounded-md -z-10"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "mt-0.5 block h-px bg-signal transition-transform duration-200",
+                      isActive
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    )}
+                  />
                 </Link>
               );
             })}
           </div>
 
-          {/* Right side actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <span className="folio hidden lg:inline">Surakarta, ID</span>
             <ThemeToggle />
-
-            {/* Mobile menu button */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-md border border-border/50 bg-background/50 hover:bg-secondary/50 transition-colors"
+              onClick={() => setIsMobileMenuOpen((v) => !v)}
+              aria-expanded={isMobileMenuOpen}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground transition-colors hover:text-foreground md:hidden"
             >
               {isMobileMenuOpen ? (
                 <X className="h-4 w-4" />
@@ -112,29 +124,29 @@ export default function Header() {
         </nav>
       </motion.header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 md:hidden border-b border-border/50 bg-background/95 backdrop-blur-md shadow-xl"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-x-0 top-16 z-40 border-b rule bg-background md:hidden"
           >
-            <div className="container mx-auto px-6 py-4 flex flex-col gap-1">
-              {navItems.map((item) => {
+            <div className="shell flex flex-col gap-1 py-4">
+              {[{ name: "Home", path: "/" }, ...navItems].map((item) => {
                 const isActive = pathname === item.path;
                 return (
                   <Link
                     key={item.path}
                     href={item.path}
                     onClick={handleLinkClick}
+                    aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "text-sm font-medium py-3 px-4 rounded-md transition-colors",
+                      "rounded-md px-4 py-3 font-mono text-[13px] uppercase tracking-[0.14em] transition-colors",
                       isActive
                         ? "bg-foreground text-background"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                     )}
                   >
                     {item.name}
