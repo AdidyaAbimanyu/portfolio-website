@@ -4,7 +4,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProgressBar from "@/components/ProgressBar";
 import { Suspense } from "react";
-// @ts-expect-error Next.js handles CSS side-effect imports through its bundler.
 import "./globals.css";
 
 const display = Archivo({
